@@ -1,0 +1,2 @@
+# Nenhuma dependência: tudo é biblioteca padrão do Python (3.12 ou mais novo).
+# O .docx é escrito com zipfile + xml, a partir do molde em modelo/.

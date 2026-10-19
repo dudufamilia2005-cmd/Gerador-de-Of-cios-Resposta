@@ -1,0 +1,866 @@
+{
+ "_leia_me": [
+  "Modelos de ofício de resposta do 1º Ofício de Morrinhos/GO. A redação de cada",
+  "modelo foi transcrita dos ofícios efetivamente expedidos em 2025-2026",
+  "(T:\\Oficios\\Enviados), trocando os dados variáveis por {campos}.",
+  "",
+  "{campo}           dado digitado; a lista 'campos' abaixo diz o rótulo e o exemplo.",
+  "{campo.chave}     variante de um campo de escolha (opções com textos por chave).",
+  "{oficio_recebido} e {processo}: os números do bloco 'Ofício recebido' da tela.",
+  "{pronome}         Vossa Excelência / Vossa Senhoria, conforme o destinatário.",
+  "{lo_la}           'lo' / 'la', conforme o gênero do destinatário.",
+  "{quem_assina}     'Nome, Cargo' de quem assina.",
+  "[ ... ]           trecho que some se algum campo dele ficar vazio.",
+  "",
+  "Cada item de 'corpo' é um parágrafo. {\"citacao\": \"id\"} insere a citação de",
+  "norma cadastrada em 'citacoes'. 'fecho' aponta para 'fechos'; \"escolha\" deixa o",
+  "escrevente escolher; null tira o fecho. 'referencia': false esconde o bloco",
+  "'Ofício recebido' (ofício que não responde a outro). 'setor': \"*\" serve a",
+  "qualquer setor. 'destinatario' sugere um destinatário do cadastro."
+ ],
+
+ "setores": {
+  "RGI": "Registro de Imóveis",
+  "STC": "Setor de Certidões",
+  "STN": "Tabelionato de Notas",
+  "ADM": "Administrativo",
+  "INT": "Intimações (alienação fiduciária)"
+ },
+
+ "fechos": {
+  "f1": {"rotulo": "Aproveitamos a oportunidade para renovar a V. Exa./V. Sa. nossos sentimentos de elevado respeito…",
+         "texto": "Aproveitamos a oportunidade para renovar a {pronome} nossos sentimentos de elevado respeito e distinta consideração, colocando-nos à disposição para eventuais esclarecimentos adicionais que se fizerem necessários."},
+  "f1-sem-pronome": {"rotulo": "Aproveitamos a oportunidade para renovar nossos sentimentos de elevado respeito… (sem pronome)",
+         "texto": "Aproveitamos a oportunidade para renovar nossos sentimentos de elevado respeito e distinta consideração, colocando-nos à disposição para eventuais esclarecimentos adicionais que se fizerem necessários."},
+  "f1-disposicao": {"rotulo": "Aproveitamos a oportunidade… colocando-nos à disposição de V. Exa./V. Sa.…",
+         "texto": "Aproveitamos a oportunidade para renovar nossos sentimentos de elevado respeito e distinta consideração, colocando-nos à disposição de {pronome} para eventuais esclarecimentos adicionais que se fizerem necessários."},
+  "f2": {"rotulo": "No ensejo, renovamos a V. Exa./V. Sa. nossos sentimentos de elevado respeito…",
+         "texto": "No ensejo, renovamos a {pronome} nossos sentimentos de elevado respeito e distinta consideração, colocando-nos à disposição para eventuais esclarecimentos adicionais que se fizerem necessários."},
+  "f3": {"rotulo": "Sendo o que cumpria informar, colocamo-nos à disposição… protestos de elevada estima",
+         "texto": "Sendo o que cumpria informar, colocamo-nos à disposição para quaisquer esclarecimentos adicionais que se fizerem necessários, aproveitando a oportunidade para renovar a {pronome} os protestos de elevada estima e consideração."},
+  "f4": {"rotulo": "Sendo o que cumpria informar, renovamos a V. Exa./V. Sa. os protestos de elevada estima…",
+         "texto": "Sendo o que cumpria informar, renovamos a {pronome} os protestos de elevada estima e distinta consideração, permanecendo à disposição para quaisquer esclarecimentos que se fizerem necessários."},
+  "f5": {"rotulo": "Renovamos a V. Exa./V. Sa. nossos protestos de elevada estima e distinta consideração…",
+         "texto": "Renovamos a {pronome} nossos protestos de elevada estima e distinta consideração, permanecendo à disposição para quaisquer esclarecimentos que se fizerem necessários."},
+  "f6": {"rotulo": "Sendo o que nos cumpria informar, renovamos a V. Exa./V. Sa. protestos de elevada estima…",
+         "texto": "Sendo o que nos cumpria informar, renovamos a {pronome} protestos de elevada estima e consideração."},
+  "f6-disposicao": {"rotulo": "Sendo o que nos cumpria informar, permanecemos à disposição de V. Exa./V. Sa.…",
+         "texto": "Sendo o que nos cumpria informar, permanecemos à disposição de {pronome} para eventuais esclarecimentos adicionais, renovando nossos protestos de elevada estima e consideração."},
+  "f6-sem-pronome": {"rotulo": "Sendo o que cumpria informar, renovamos protestos de elevada estima e consideração.",
+         "texto": "Sendo o que cumpria informar, renovamos protestos de elevada estima e consideração."},
+  "f7": {"rotulo": "Sem mais para o momento… tão logo sejam prestados os devidos esclarecimentos.",
+         "texto": "Sem mais para o momento, renovamos nossos protestos de elevada estima e distinta consideração, permanecendo à inteira disposição para o fiel cumprimento da determinação judicial, tão logo sejam prestados os devidos esclarecimentos."},
+  "f8": {"rotulo": "Sendo o que se apresenta para o momento, encaminhamos os presentes esclarecimentos…",
+         "texto": "Sendo o que se apresenta para o momento, encaminhamos os presentes esclarecimentos para conhecimento e eventuais providências que {pronome} entender cabíveis."},
+  "f-protestos-busca": {"rotulo": "Aproveitamos a oportunidade para renovar a V. Exa./V. Sa. nossos protestos… permanecendo esta Serventia à disposição",
+         "texto": "Aproveitamos a oportunidade para renovar a {pronome} nossos protestos de elevada estima e distinta consideração, permanecendo esta Serventia à disposição para quaisquer esclarecimentos adicionais que se fizerem necessários."},
+  "ensejo": {"rotulo": "No ensejo, apresentamos nossos votos de elevada estima e distinta consideração.",
+         "texto": "No ensejo, apresentamos nossos votos de elevada estima e distinta consideração."},
+  "ensejo-disposicao": {"rotulo": "No ensejo, nos colocamos à disposição para maiores esclarecimentos… votos de elevada estima",
+         "texto": "No ensejo, nos colocamos à disposição para maiores esclarecimentos que forem necessários e apresentamos nossos votos de elevada estima e distinta consideração."},
+  "ensejo-quaisquer": {"rotulo": "No ensejo, colocamo-nos à disposição para quaisquer esclarecimentos… votos de elevada estima",
+         "texto": "No ensejo, colocamo-nos à disposição para quaisquer esclarecimentos que se fizerem necessários e apresentamos nossos votos de elevada estima e distinta consideração."},
+  "ensejo-vexa": {"rotulo": "No ensejo, apresentamos a V. Exa./V. Sa. votos de elevada estima e distinta consideração.",
+         "texto": "No ensejo, apresentamos a {pronome} votos de elevada estima e distinta consideração."},
+  "permanecemos-reiteramos": {"rotulo": "Permanecemos à disposição para eventuais dúvidas… / Reiteramos nossos votos…",
+         "texto": "Permanecemos à disposição para eventuais dúvidas e esclarecimentos que se fizerem necessários.\nReiteramos nossos votos de elevada estima e distinta consideração."},
+  "sem-mais-disposicao": {"rotulo": "Sem mais para o momento, colocamo-nos à disposição de V. Exa./V. Sa.…",
+         "texto": "Sem mais para o momento, colocamo-nos à disposição de {pronome} para quaisquer esclarecimentos adicionais que se façam necessários."},
+  "sem-mais-estima": {"rotulo": "Sem mais para o momento, renovamos nossos protestos de estima e consideração.",
+         "texto": "Sem mais para o momento, renovamos nossos protestos de estima e consideração."},
+  "sem-mais-apreco": {"rotulo": "Sem mais para o momento, renovamos nossos protestos de elevada consideração e apreço.",
+         "texto": "Sem mais para o momento, renovamos nossos protestos de elevada consideração e apreço."},
+  "sendo-havia": {"rotulo": "Sendo o que havia para o momento, colocamo-nos à disposição…",
+         "texto": "Sendo o que havia para o momento, colocamo-nos à disposição para quaisquer esclarecimentos adicionais que se fizerem necessários."},
+  "aproveito-estima": {"rotulo": "Aproveito a oportunidade para renovar os protestos de estima e consideração. (1ª pessoa)",
+         "texto": "Aproveito a oportunidade para renovar os protestos de estima e consideração."},
+  "aproveito-admiracao": {"rotulo": "Aproveito a oportunidade para renovar a V. Exa. sentimentos de respeito e admiração. (titular)",
+         "texto": "Aproveito a oportunidade para renovar a {pronome} sentimentos de respeito e admiração."}
+ },
+
+ "citacoes": {
+  "cnib-320": {
+   "titulo": "Provimento CNJ nº 149/2023 (Código Nacional de Normas), com a redação do Provimento nº 188, de 04 de dezembro de 2024",
+   "conferido": "Texto conferido com o índice do CNN usado pelo gerador de notas devolutivas (Notas\\dados\\artigos.json), em 19/10/2026.",
+   "artigos": [
+    ["Art. 320-D.", "Cadastrada na CNIB a autorização de cancelamento da ordem de indisponibilidade, o Oficial de Registro de Imóveis fica obrigado a averbar o seu cancelamento, independentemente de mandado judicial, desde que pagos os emolumentos, quando cabíveis."],
+    ["Art. 320-E.", "Todas as ordens de indisponibilidade e de cancelamento deverão ser encaminhadas aos oficiais de registro de imóveis, exclusivamente, por intermédio da CNIB, vedada a utilização de quaisquer outros meios, tais como mandados, ofícios, malotes digitais e mensagens eletrônicas."]
+   ]
+  }
+ },
+
+ "campos": {
+  "oficio_recebido":   {"rotulo": "Ofício recebido n.º", "exemplo": "213/2026"},
+  "processo":          {"rotulo": "Processo n.º", "exemplo": "5000000-00.2026.8.09.0107"},
+
+  "matricula":         {"rotulo": "Matrícula n.º", "exemplo": "12.345"},
+  "matriculas":        {"rotulo": "Matrículas", "exemplo": "12.345 e 12.346"},
+  "matricula_nova":    {"rotulo": "Matrícula atual (aberta)", "exemplo": "39.001"},
+  "ato":               {"rotulo": "Ato lançado", "exemplo": "AV.08"},
+  "ato_cancelado":     {"rotulo": "Ato cancelado", "exemplo": "R.30"},
+  "ato_cancelamento":  {"rotulo": "Ato do cancelamento", "exemplo": "AV.31"},
+  "ato_consolidacao":  {"rotulo": "Ato da consolidação", "exemplo": "AV.05"},
+  "ato_doacao":        {"rotulo": "Ato da doação", "exemplo": "R.02"},
+  "ato_inexistente":   {"rotulo": "Ato que não existe na matrícula", "exemplo": "penhora"},
+  "data_ato":          {"rotulo": "Data do ato", "tipo": "data", "formato": "extenso"},
+  "data_ato_curta":    {"rotulo": "Data do ato", "tipo": "data", "formato": "curta"},
+  "data_cancelamento": {"rotulo": "Cancelada desde", "tipo": "data", "formato": "curta"},
+  "protocolo":         {"rotulo": "Protocolo n.º", "exemplo": "181.000"},
+  "documento_recebido": {"rotulo": "O que foi recebido", "padrao": "Ofício",
+                        "opcoes": ["Ofício", "Mandado de Averbação", "Decisão com força de Ofício"]},
+  "fracao":            {"rotulo": "Fração penhorada", "exemplo": "25% (vinte e cinco por cento)",
+                        "ajuda": "Em branco, o ofício diz que a penhora é sobre o imóvel inteiro."},
+  "proprietario":      {"rotulo": "Proprietário (nome e CPF)",
+                        "exemplo": "Fulano de Tal, inscrito no CPF/MF sob o n.º 000.000.000-00"},
+  "proprietarios":     {"rotulo": "Proprietário(s)", "exemplo": "Fulano de Tal e Beltrana de Tal"},
+  "onus":              {"rotulo": "Ônus cancelado",
+                        "opcoes": {
+                         "penhora":           {"do": "da penhora", "ao": "à penhora", "o_a": "a", "titulo": "Penhora", "nome": "penhora"},
+                         "hipoteca":          {"do": "da hipoteca", "ao": "à hipoteca", "o_a": "a", "titulo": "Hipoteca", "nome": "hipoteca"},
+                         "arresto":           {"do": "do arresto", "ao": "ao arresto", "o_a": "o", "titulo": "Arresto", "nome": "arresto"},
+                         "averbação premonitória": {"do": "da averbação premonitória", "ao": "à averbação premonitória", "o_a": "a", "titulo": "Averbação Premonitória", "nome": "premonitoria"},
+                         "indisponibilidade": {"do": "da indisponibilidade", "ao": "à indisponibilidade", "o_a": "a", "titulo": "Indisponibilidade", "nome": "indisponibilidade"}}},
+  "permanecem":        {"rotulo": "Ônus que continuam na matrícula", "tipo": "longo",
+                        "exemplo": "permanecem ativas na referida matrícula duas indisponibilidades de bens, encaminhadas por meio da CNIB, conforme AV.06 e AV.08.",
+                        "ajuda": "Em branco, o parágrafo não entra."},
+  "credor":            {"rotulo": "Credor fiduciário (com do/da)", "exemplo": "do credor fiduciário Banco Exemplo S/A"},
+  "fracao_doacao":     {"rotulo": "Fração que retornou", "exemplo": "83% (oitenta e três por cento)"},
+  "ente_doador":       {"rotulo": "Ente que recebe de volta", "padrao": "Município de Morrinhos/GO"},
+  "ordem_cnib":        {"rotulo": "Ordem CNIB n.º", "exemplo": "202600.0000.00000000-XX-000"},
+  "data_ordem":        {"rotulo": "Data da ordem", "tipo": "data", "formato": "curta"},
+  "pedido_juizo":      {"rotulo": "O que o juízo pede", "tipo": "longo",
+                        "exemplo": "o cancelamento da averbação premonitória relacionada ao presente processo, averbada sob o ato AV.08"},
+  "ato_pedido":        {"rotulo": "Ato determinado", "exemplo": "averbação do cancelamento da indisponibilidade"},
+  "motivo_sem_contato": {"rotulo": "Por que não houve contato",
+                        "opcoes": {
+                         "Sem gratuidade e sem contato com as partes": {"texto": "Todavia, verificou-se que as partes interessadas não possuem gratuidade de justiça e não foi possível estabelecer contato para o recolhimento dos valores correspondentes. Em razão disso, restou inviabilizado o prosseguimento das comunicações necessárias."},
+                         "Parte sem dados no cadastro": {"texto": "Todavia, não foi possível realizar contato com a parte interessada, uma vez que não localizamos seus dados em nossos cadastros, motivo pelo qual não pudemos prosseguir com as comunicações necessárias para viabilizar o recolhimento dos valores correspondentes."},
+                         "Processo em segredo de justiça": {"texto": "Todavia, verificou-se que não foi possível estabelecer contato com as partes para viabilizar o recolhimento dos valores correspondentes, tendo em vista que os autos tramitam sob segredo de justiça, circunstância que impossibilitou o acesso integral ao processo e, consequentemente, a consulta aos respectivos meios de contato das partes. Em razão da impossibilidade de contato, restou inviabilizado o prosseguimento das comunicações necessárias."}}},
+  "advogado":          {"rotulo": "Advogado(a) contatado(a)", "exemplo": "Dr. Fulano de Tal"},
+  "telefone":          {"rotulo": "Telefone do contato", "exemplo": "(64) 90000-0000"},
+  "data_contato":      {"rotulo": "Data do contato", "tipo": "data", "formato": "curta"},
+  "objeto_titulo":     {"rotulo": "Objeto do título", "tipo": "longo",
+                        "exemplo": "transferência da propriedade do bem matriculado sob o n.º 12.345 deste CRI, em favor de …"},
+  "objeto":            {"rotulo": "Do que trata o ofício", "exemplo": "cancelamento do ajuizamento da ação e à partilha"},
+  "resumo_exigencias": {"rotulo": "Resumo das exigências", "tipo": "longo",
+                        "exemplo": "é necessária a apresentação da guia de ITCD quitada…"},
+  "objeto_esclarecimento": {"rotulo": "Assunto da decisão", "exemplo": "averbação de retificação de escritura de doação"},
+  "exposicao":         {"rotulo": "Exposição da divergência", "tipo": "longo",
+                        "exemplo": "Verifica-se que a decisão menciona a matrícula n.º … enquanto o ofício indica …"},
+  "ponto_esclarecer":  {"rotulo": "O que precisa ser esclarecido", "exemplo": "qual das matrículas deve receber o ato"},
+  "fracao_penhora":    {"rotulo": "Percentual do imóvel", "exemplo": "25% (vinte e cinco por cento)"},
+  "requerente":        {"rotulo": "Requerente", "exemplo": "Fulano de Tal"},
+  "situacao_imovel":   {"rotulo": "Situação do imóvel (parágrafo)", "tipo": "longo",
+                        "ajuda": "Opcional: parágrafo sobre a situação física/registral do imóvel."},
+  "area_registrada":   {"rotulo": "Área registrada", "exemplo": "20,0000ha"},
+  "area_apurada":      {"rotulo": "Área apurada", "exemplo": "23,5000ha"},
+  "data_protocolo":    {"rotulo": "Data do protocolo", "tipo": "data", "formato": "curta"},
+  "confrontantes":     {"rotulo": "Confrontantes (parágrafo)", "tipo": "longo",
+                        "ajuda": "Opcional: parágrafo sobre a anuência dos confrontantes."},
+  "processo_usucapiao": {"rotulo": "Processo de usucapião n.º", "exemplo": "2026/04"},
+  "protocolo_notificacao": {"rotulo": "Protocolo da notificação", "exemplo": "184.900"},
+  "responsavel_tecnico": {"rotulo": "Responsável técnico", "exemplo": "Fulano de Tal"},
+  "crea":              {"rotulo": "CREA n.º", "exemplo": "00000/D-GO"},
+  "n_instrumento":     {"rotulo": "Instrumento de doação n.º", "exemplo": "000/2021"},
+  "data_assinatura":   {"rotulo": "Assinado em", "tipo": "data", "formato": "extenso"},
+  "prazo":             {"rotulo": "Prazo da cláusula", "exemplo": "05 (cinco) anos"},
+  "data_fim":          {"rotulo": "Prazo encerrado em", "tipo": "data", "formato": "extenso"},
+
+  "anexo_extra":       {"rotulo": "Junto com a certidão", "exemplo": "sua negativa de ônus"},
+  "processo_sei":      {"rotulo": "Processo SEI n.º", "exemplo": "202500005000126"},
+  "pessoa":            {"rotulo": "Pessoa pesquisada",
+                        "opcoes": {
+                         "Homem":    {"de": "de", "inscrito": "inscrito"},
+                         "Mulher":   {"de": "de", "inscrito": "inscrita"},
+                         "Falecido": {"de": "do de cujus", "inscrito": "inscrito"},
+                         "Falecida": {"de": "da de cujus", "inscrito": "inscrita"}}},
+  "nome_pesquisado":   {"rotulo": "Nome pesquisado", "exemplo": "Fulano de Tal"},
+  "cpf":               {"rotulo": "CPF", "exemplo": "000.000.000-00"},
+  "razao_social":      {"rotulo": "Razão social", "exemplo": "Empresa Exemplo Ltda."},
+  "cnpj":              {"rotulo": "CNPJ", "exemplo": "00.000.000/0001-00"},
+  "filiacao":          {"rotulo": "Filho(a) de", "exemplo": "Fulana de Tal"},
+  "urbano_rural":      {"rotulo": "Imóvel", "opcoes": ["urbano", "rural"]},
+  "mes_referencia":    {"rotulo": "Mês de referência", "exemplo": "SETEMBRO - 2026", "auto": "mes_anterior",
+                        "ajuda": "O mês anterior à data do ofício, em maiúsculas."},
+  "natureza_ato":      {"rotulo": "Escritura de", "exemplo": "Inventário e Partilha do Espólio de Fulano de Tal"},
+  "folhas":            {"rotulo": "Folhas", "exemplo": "163F/168F"},
+  "livro":             {"rotulo": "Livro", "exemplo": "475"},
+  "gratuidade":        {"rotulo": "Justiça gratuita",
+                        "opcoes": {"Sim, exequente beneficiário": {"texto": "Ressalta-se que o fornecimento da presente certidão se dá em cumprimento à ordem judicial, tendo em vista a informação de que a parte exequente é beneficiária da justiça gratuita, motivo pelo qual não há cobrança de emolumentos ou custas cartorárias."}},
+                        "ajuda": "Em branco, o parágrafo da gratuidade não entra."},
+  "autos_extrajudiciais": {"rotulo": "Autos extrajudiciais n.º", "exemplo": "202600000000"},
+  "denominacao_imovel": {"rotulo": "Denominação do imóvel", "exemplo": "Fazenda Santa Rosa"},
+  "car":               {"rotulo": "CAR n.º", "exemplo": "GO-5213806-…"},
+  "ato_car":           {"rotulo": "Ato do CAR", "exemplo": "AV.104"},
+  "data_assinatura_digital": {"rotulo": "Ofício assinado em", "tipo": "data", "formato": "curta"},
+  "email_resposta":    {"rotulo": "E-mail de resposta", "exemplo": "protocolo@orgao.go.gov.br",
+                        "ajuda": "Em branco, a frase do e-mail não entra."},
+
+  "instrumento":       {"rotulo": "Instrumento comunicado",
+                        "opcoes": {
+                         "Procuração": {"nome": "Procuração", "nosso": "Substabelecimento"},
+                         "Substabelecimento de procuração": {"nome": "Substabelecimento de Procuração", "nosso": "Substabelecimento de Substabelecimento"}}},
+  "data_procuracao":   {"rotulo": "Procuração lavrada em", "tipo": "data", "formato": "curta"},
+  "livro_procuracao":  {"rotulo": "Livro (nas notas dela/dele)", "exemplo": "00081-P"},
+  "folhas_procuracao": {"rotulo": "Folhas (nas notas dela/dele)", "exemplo": "045/046"},
+  "reserva":           {"rotulo": "Reserva de poderes", "padrao": "sem reserva de iguais poderes",
+                        "opcoes": ["sem reserva de iguais poderes", "com reserva de iguais poderes"]},
+  "substabelecido":    {"rotulo": "Substabelecido a", "exemplo": "Fulano de Tal"},
+  "poderes":           {"rotulo": "Poderes", "padrao": "TOTAIS", "opcoes": ["TOTAIS", "PARCIAIS"]},
+  "outorgante":        {"rotulo": "Outorgante", "exemplo": "Beltrano de Tal"},
+  "data_nosso_ato":    {"rotulo": "Nosso ato lavrado em", "tipo": "data", "formato": "curta"},
+  "folhas_nosso_ato":  {"rotulo": "Nossas folhas", "exemplo": "158F/159F"},
+  "livro_nosso_ato":   {"rotulo": "Nosso livro", "exemplo": "119"},
+  "data_ue":           {"rotulo": "União estável reconhecida em", "tipo": "data", "formato": "curta"},
+  "convivente1":       {"rotulo": "Convivente (Sr.)", "exemplo": "Fulano de Tal"},
+  "convivente2":       {"rotulo": "Convivente (Sra.)", "exemplo": "Beltrana de Tal"},
+  "partilha":          {"rotulo": "Partilha", "padrao": "sem partilha de bens",
+                        "opcoes": ["sem partilha de bens", "com partilha de bens"]},
+  "pedido_tabelionato": {"rotulo": "Pedido n.º", "exemplo": "19.000"},
+  "tipo_escritura":    {"rotulo": "Escritura de", "exemplo": "Inventário e Partilha"},
+  "qualificacao_apresentantes": {"rotulo": "Apresentante(s) — qualificação", "tipo": "longo"},
+  "qualificacao_falecido": {"rotulo": "Falecido(a) — qualificação, estado civil e óbito", "tipo": "longo"},
+  "interessado":       {"rotulo": "Interessado",
+                        "opcoes": {
+                         "Menor":   {"tipo": "menor", "o_a": "o menor"},
+                         "Menor (mulher)": {"tipo": "menor", "o_a": "a menor"},
+                         "Incapaz": {"tipo": "incapaz", "o_a": "o incapaz"},
+                         "Incapaz (mulher)": {"tipo": "incapaz", "o_a": "a incapaz"}}},
+  "qualificacao_incapaz": {"rotulo": "Menor/incapaz — qualificação e representação", "tipo": "longo"},
+  "documentos_apresentados": {"rotulo": "Documentos apresentados", "tipo": "longo",
+                        "exemplo": "(i)-o resultado da pesquisa na CENSEC (RCTO)…; (ii)-cópia da minuta…"},
+  "genero_falecido":   {"rotulo": "Falecido(a)",
+                        "opcoes": {"Falecido": {"o_a": "do falecido"}, "Falecida": {"o_a": "da falecida"}}},
+  "testador":          {"rotulo": "Testador(a)", "exemplo": "FULANO DE TAL"},
+  "data_testamento":   {"rotulo": "Testamento lavrado em", "tipo": "data", "formato": "curta"},
+  "motivo_exclusao":   {"rotulo": "Motivo da exclusão", "tipo": "longo",
+                        "padrao": "constar no envio à Central (RCTO) os demais beneficiários como sendo também testadores"},
+  "procedimento":      {"rotulo": "Procedimento", "exemplo": "divisão amigável/extinção de condomínio"},
+  "guia":              {"rotulo": "Guia n.º", "exemplo": "0000"},
+  "data_guia":         {"rotulo": "Data da guia", "tipo": "data", "formato": "curta"},
+  "descricao_imovel":  {"rotulo": "Descrição do imóvel", "tipo": "longo",
+                        "exemplo": "Lote n.º 02, Quadra 01, situado na …, nesta cidade, com área de 1.600,00m²"},
+  "partes_proporcoes": {"rotulo": "Partes/proprietários e proporções", "tipo": "longo"},
+  "divisao":           {"rotulo": "Divisão/desmembramento", "tipo": "longo"},
+  "data_oficio_recebido": {"rotulo": "Ofício datado de", "tipo": "data", "formato": "extenso"},
+  "falecido":          {"rotulo": "Espólio de (nome)", "exemplo": "FULANO DE TAL"},
+  "n_despacho":        {"rotulo": "Despacho n.º", "exemplo": "2026002736401"},
+  "data_solicitacao":  {"rotulo": "Documentação solicitada em", "tipo": "data", "formato": "curta"},
+  "data_reiteracao":   {"rotulo": "Reiterada em", "tipo": "data", "formato": "curta"},
+  "condominos":        {"rotulo": "Condôminos", "exemplo": "Fulano de Tal e Beltrana de Tal"},
+  "averbacoes":        {"rotulo": "Gravado sob (atos)", "exemplo": "AV.5-38.201, AV.6-38.201"},
+  "onus_bancario":     {"rotulo": "Ônus", "exemplo": "PENHOR RURAL/IMÓVEL DE LOCALIZAÇÃO"},
+  "titulos_credito":   {"rotulo": "Títulos de crédito", "tipo": "longo",
+                        "exemplo": "Cédula Rural Pignoratícia n.º …, emitida em …"},
+  "n_guia_escritura":  {"rotulo": "Guia para Escritura n.º", "exemplo": "123/2025"},
+  "data_guia_escritura": {"rotulo": "Guia expedida em", "tipo": "data", "formato": "curta"},
+  "beneficiario":      {"rotulo": "Autorização de venda em favor de", "exemplo": "Fulano de Tal"},
+  "ano_guia":          {"rotulo": "Ano da guia apresentada", "exemplo": "2024"},
+
+  "ano_exercicio":     {"rotulo": "Exercício", "exemplo": "2025"},
+  "inicio_ferias":     {"rotulo": "Férias de", "tipo": "data", "formato": "curta"},
+  "fim_ferias":        {"rotulo": "Férias até", "tipo": "data", "formato": "curta"},
+  "substituto_responsavel": {"rotulo": "Substituto que responde", "exemplo": "FULANO DE TAL"},
+  "demais_substitutos": {"rotulo": "Demais substitutos", "exemplo": "FULANO DE TAL e BELTRANA DE TAL"},
+  "nome_substituto":   {"rotulo": "Substituto(a) nomeado(a)", "exemplo": "FULANA DE TAL"},
+  "texto_livre":       {"rotulo": "Texto do ofício", "tipo": "longo",
+                        "exemplo": "Acusamos o recebimento do ofício em epígrafe e…",
+                        "ajuda": "Cada linha vira um parágrafo."},
+  "assunto_livre":     {"rotulo": "Assunto", "exemplo": "Prestação de informações"},
+  "arquivo_livre":     {"rotulo": "Nome do arquivo", "exemplo": "prestar esclarecimentos - matr. 12.345"}
+ },
+
+ "modelos": [
+
+  {"id": "rgi-ajuizamento-averbado", "setor": "RGI", "grupo": "Ordem cumprida",
+   "rotulo": "Ajuizamento de ação averbado",
+   "descricao": "A averbação da ação (premonitória/ajuizamento) foi feita na matrícula.",
+   "assunto": "Ajuizamento de Ação – Matr. {matricula}",
+   "arquivo": "ajuizamento de acao - matr. {matricula}",
+   "corpo": [
+    "Em atenção ao {documento_recebido} em epígrafe, por meio do qual foi determinada a averbação, para ciência de terceiros, da presente ação à margem da matrícula n.º {matricula}, cumpre-nos informar a {pronome} que a ordem judicial foi devidamente cumprida por esta Serventia.",
+    "A averbação foi realizada em {data_ato}, sob o nº {ato} da matrícula n.º {matricula}, conferindo publicidade à existência da presente demanda judicial, para resguardo de eventuais direitos de terceiros interessados."
+   ],
+   "fecho": "f3"},
+
+  {"id": "rgi-penhora-registrada", "setor": "RGI", "grupo": "Ordem cumprida",
+   "rotulo": "Penhora registrada",
+   "descricao": "O registro da penhora foi feito. Fração e proprietário são opcionais.",
+   "assunto": "Penhora – Matrícula {matricula}",
+   "arquivo": "penhora - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe e, em cumprimento ao que foi determinado, informamos que foi devidamente efetuado o registro da Penhora sobre [{fracao} d]o imóvel, conforme lançamento efetuado sob o {ato} da matrícula nº {matricula}[, de propriedade de {proprietario}], com a finalidade de conferir publicidade e ônus da presente ação sobre o imóvel, resguardando-se os direitos de eventuais terceiros interessados."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-cancelamento-constricao", "setor": "RGI", "grupo": "Ordem cumprida",
+   "rotulo": "Cancelamento de penhora, hipoteca, arresto ou indisponibilidade",
+   "descricao": "O ônus foi cancelado. Pode informar ônus que continuam na matrícula.",
+   "assunto": "Cancelamento de {onus.titulo} – Matr. {matricula}",
+   "arquivo": "cancelamento de {onus.nome} - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe, por meio do qual foi determinado o cancelamento {onus.do} registrad{onus.o_a} à margem da matrícula imobiliária n.º {matricula}.",
+    "Em cumprimento à determinação, cumpre-nos informar que o ônus correspondente {onus.ao} anteriormente registrad{onus.o_a} sob o {ato_cancelado} da matrícula imobiliária n.º {matricula}, foi devidamente cancelado por meio da {ato_cancelamento}, lançada em {data_ato}, à margem da referida matrícula, inexistindo, portanto, qualquer providência registral pendente quanto à mencionada constrição.",
+    "[Cumpre-nos informar, ainda, que {permanecem}]"
+   ],
+   "fecho": "f5"},
+
+  {"id": "rgi-cancelamento-ajuizamento", "setor": "RGI", "grupo": "Ordem cumprida",
+   "rotulo": "Cancelamento de ajuizamento de ação",
+   "descricao": "A averbação da ação foi cancelada.",
+   "assunto": "Cancelamento de Ajuizamento de Ação – Matr. {matricula}",
+   "arquivo": "cancelamento de ajuizamento de acao - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe e, em cumprimento ao que foi determinado, informamos que foi devidamente realizada a averbação para cancelamento da presente ação, gravada sob a {ato_cancelado} da matrícula {matricula}, conforme cancelamento efetuado sob a {ato_cancelamento}[ em data de {data_ato}]."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-cancelamento-premonitoria", "setor": "RGI", "grupo": "Ordem cumprida",
+   "rotulo": "Cancelamento de averbação premonitória",
+   "descricao": "A averbação da existência da ação (art. 828 do CPC) foi cancelada.",
+   "assunto": "Cancelamento de Averbação Premonitória – Matr. {matricula}",
+   "arquivo": "cancelamento de premonitoria - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe e, em cumprimento ao que foi determinado, informamos que foi devidamente efetuada em data de {data_ato_curta}, a averbação para cancelamento da existência da presente ação, averbada sob a {ato_cancelado} da matrícula imobiliária nº {matricula}, conforme cancelamento averbado sob a {ato_cancelamento} da referida matrícula."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-cancelamento-consolidacao", "setor": "RGI", "grupo": "Ordem cumprida",
+   "rotulo": "Cancelamento de consolidação da propriedade",
+   "descricao": "Cancelada a consolidação em favor do credor fiduciário; o imóvel volta ao proprietário.",
+   "assunto": "Cancelamento de Consolidação de Propriedade – Matr. {matricula}",
+   "arquivo": "cancelamento de consolidacao de propriedade - matr. {matricula}",
+   "corpo": [
+    "Em atenção ao {documento_recebido} em epígrafe, e em cumprimento à determinação nele contida, informamos que foi devidamente promovida a averbação de cancelamento da consolidação da propriedade em favor {credor}, anteriormente lançada sob a {ato_consolidacao} da matrícula imobiliária n.º {matricula}.",
+    "O cancelamento foi realizado sob a {ato_cancelamento} da referida matrícula, restabelecendo-se a situação jurídica anterior (status quo ante), de modo que a propriedade do imóvel retornou ao patrimônio de {proprietarios}."
+   ],
+   "fecho": "f4"},
+
+  {"id": "rgi-reversao-doacao", "setor": "RGI", "grupo": "Ordem cumprida",
+   "rotulo": "Reversão de doação com encargo",
+   "descricao": "Cancelado o registro da doação com encargo; o imóvel volta ao Município.",
+   "assunto": "Reversão de Doação – Matr. {matricula}",
+   "arquivo": "reversao de doacao - matr. {matricula}",
+   "corpo": [
+    "Em atenção ao Ofício em epígrafe, por meio do qual foi determinado o cancelamento da averbação/registro da Escritura Pública de Doação com Encargo incidente sobre o imóvel matriculado sob o nº {matricula}, desta Serventia, cumpre-nos informar a {pronome} que a determinação judicial foi devidamente cumprida.",
+    "Em data de {data_ato}, foi lançada a {ato_cancelamento} da matrícula nº {matricula}, por meio da qual se procedeu à reversão da doação registrada sob o {ato_doacao}, com expressa revogação de todas as cláusulas e condições anteriormente convencionadas, resultando no retorno da fração correspondente a {fracao_doacao} do imóvel ao domínio do {ente_doador}.",
+    "Dessa forma, a reversão promovida restabeleceu integralmente o status “quo ante”, desfazendo os efeitos registrais decorrentes do registro da doação declarada nula e reconduzindo o imóvel à situação jurídico-registral anteriormente existente, voltando a integrar o patrimônio do {ente_doador}.",
+    "Encaminha-se, em anexo, certidão de inteiro teor atualizada da matrícula nº {matricula}, para comprovação do integral cumprimento da ordem judicial."
+   ],
+   "fecho": "f6"},
+
+  {"id": "rgi-indisponibilidade-ja-cancelada", "setor": "RGI", "grupo": "Nada a fazer",
+   "rotulo": "Indisponibilidade já cancelada pela CNIB",
+   "descricao": "O cancelamento pedido já foi feito antes, por ordem da CNIB.",
+   "assunto": "Cancelamento de Indisponibilidade – Matr. {matricula}",
+   "arquivo": "prestar esclarecimentos - cancelamento de indisponibilidade - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe e, respeitosamente, informamos a {pronome} que a indisponibilidade em questão já se encontra devidamente cancelada desde {data_cancelamento}, conforme averbação lançada sob a {ato_cancelamento} da matrícula nº {matricula}.",
+    "O referido cancelamento foi realizado em cumprimento à ordem nº {ordem_cnib}[, datada de {data_ordem}], encaminhada por meio da Central Nacional de Indisponibilidade de Bens.",
+    "Dessa forma, informamos que não há providências a serem adotadas por esta serventia no tocante à presente determinação, uma vez que a medida requerida já foi integralmente cumprida em momento anterior."
+   ],
+   "fecho": "f2"},
+
+  {"id": "rgi-ato-inexistente", "setor": "RGI", "grupo": "Nada a fazer",
+   "rotulo": "Ato inexistente na matrícula",
+   "descricao": "Pedem baixa de algo (penhora, ajuizamento…) que não consta da matrícula.",
+   "assunto": "Baixa de {ato_inexistente} – Matr. {matricula}",
+   "arquivo": "baixa de {ato_inexistente} - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe e, respeitosamente, informamos a {pronome} que a matrícula {matricula}, objeto do ofício em questão, não detém qualquer ato de “{ato_inexistente}” vigente/ativo em seu teor.",
+    "Dessa forma, informamos que não há providências a serem adotadas por esta serventia no tocante à presente determinação, uma vez que a medida requerida se faz desnecessária."
+   ],
+   "fecho": "f2"},
+
+  {"id": "rgi-ja-cumprido-matricula-encerrada", "setor": "RGI", "grupo": "Nada a fazer",
+   "rotulo": "Ordem já cumprida (matrícula encerrada e aberta outra)",
+   "descricao": "O ato foi transportado para a matrícula nova e já tinha sido praticado.",
+   "assunto": "Matr. {matricula}",
+   "arquivo": "prestar esclarecimentos - matr. {matricula}",
+   "corpo": [
+    "Em atenção ao Ofício em epígrafe, por meio do qual {pedido_juizo}, informo a {pronome} que a determinação judicial já havia sido devidamente cumprida por esta Serventia.",
+    "Esclareço que a matrícula nº {matricula} foi encerrada, ocasião em que foi aberta a matrícula nº {matricula_nova}, para a qual foram transportados os atos e ônus vigentes, conforme {ato} da matrícula atual.",
+    "[{exposicao}]",
+    "Dessa forma, verifica-se que a ordem já se encontra integralmente cumprida no âmbito registral."
+   ],
+   "fecho": "f6-sem-pronome"},
+
+  {"id": "rgi-indisponibilidade-fora-cnib", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Indisponibilidade recebida fora da CNIB",
+   "descricao": "Ordem de indisponibilidade chegou por ofício: só pode vir pela CNIB (arts. 320-D e 320-E do CNN).",
+   "assunto": "Indisponibilidade – Matr. {matricula}",
+   "arquivo": "indisponibilidade - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe, e esclarecemos que, a normativa vigente estabelece que as ordens de indisponibilidade e seus respectivos cancelamentos devem ser encaminhados aos Oficiais de Registro de Imóveis exclusivamente por meio da Central Nacional de Indisponibilidade de Bens (CNIB), vedada a utilização de quaisquer outros meios.",
+    {"citacao": "cnib-320"},
+    "Assim, em razão da ausência da ordem na (CNIB), e diante da vedação normativa para recepção por meios físicos ou eletrônicos diversos, a indisponibilidade não pôde ser averbada na matrícula mencionada.",
+    "No ensejo, permanecemos à disposição para o imediato cumprimento de eventual determinação posterior, caso venha a ser encaminhada a este Registro ordem expedida pela Central Nacional de Indisponibilidade de Bens (CNIB)."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-cancelamento-indisponibilidade-fora-cnib", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Cancelamento de indisponibilidade fora da CNIB",
+   "descricao": "Pedem cancelar indisponibilidade por ofício: a ordem de cancelamento precisa vir pela CNIB.",
+   "assunto": "Cancelamento de Indisponibilidade – Matr. {matricula}",
+   "arquivo": "cancelamento de indisponibilidade - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe, por meio do qual foi encaminhada determinação de cancelamento de ordem de indisponibilidade incidente sobre a matrícula nº {matricula}[ ({ato})] deste Registro de Imóveis.",
+    "Todavia, cumpre esclarecer que a normativa vigente estabelece que as ordens de indisponibilidade de bens e seus respectivos cancelamentos devem ser encaminhados aos Oficiais de Registro de Imóveis exclusivamente por meio da Central Nacional de Indisponibilidade de Bens (CNIB), sendo vedada a utilização de quaisquer outros meios de comunicação.",
+    {"citacao": "cnib-320"},
+    "Dessa forma, considerando que não foi localizada, até o presente momento, a respectiva ordem de cancelamento na Central Nacional de Indisponibilidade de Bens (CNIB), bem como diante da vedação normativa quanto ao recebimento da determinação por outros meios, resta inviabilizado o cumprimento da medida diretamente por este Registro de Imóveis.",
+    "Assim, permanecemos no aguardo do regular encaminhamento da ordem de cancelamento por meio da referida Central, oportunidade em que o ato será prontamente analisado e cumprido, observadas as formalidades legais e regulamentares aplicáveis."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-custas-sem-contato", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Emolumentos não pagos — sem contato com a parte",
+   "descricao": "Nada impede o ato, mas ninguém pagou e não houve como contatar a parte. Pede orientação.",
+   "assunto": "",
+   "arquivo": "emolumentos pendentes - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do Ofício em epígrafe, no qual {pronome} solicita {pedido_juizo}, referente à matrícula n.º {matricula}.",
+    "Informamos que este Ofício de Registro de Imóveis não possui qualquer impedimento para a prática do ato solicitado, estando apto a cumpri-lo tão logo seja efetuado o pagamento das custas e emolumentos devidos, conforme exame cálculo em anexo, no qual consta o valor a ser recolhido.",
+    "{motivo_sem_contato.texto}",
+    "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de contato com a parte responsável pelo recolhimento das custas e emolumentos."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-custas-advogado-sem-retorno", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Emolumentos não pagos — advogado não retornou",
+   "descricao": "Contato feito com o advogado para cobrar os emolumentos, sem retorno. Pede orientação.",
+   "assunto": "",
+   "arquivo": "emolumentos pendentes - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do Ofício em epígrafe, no qual {pronome} solicita {pedido_juizo}, referente à matrícula n.º {matricula}.",
+    "Informamos que este Ofício de Registro de Imóveis não possui qualquer impedimento para a prática do ato solicitado, estando apto a cumpri-lo tão logo seja efetuado o pagamento das custas e emolumentos devidos, conforme exame cálculo em anexo, no qual consta o valor a ser recolhido. Consultados os autos, não há notícia de concessão de gratuidade da justiça em favor da parte responsável pelo recolhimento, de modo que os emolumentos permanecem devidos, não havendo isenção aplicável ao caso.",
+    "Todavia, entramos em contato com o advogado do processo {advogado}, através do telefone de contato {telefone}, desde o dia {data_contato}, solicitando a cobrança dos emolumentos junto à parte responsável, a fim de viabilizar o pagamento e o consequente ingresso do título para cumprimento das custas e emolumentos devidos. Na ocasião, o advogado informou que iria verificar a questão e retornaria, porém, até o presente momento, não obtivemos qualquer retorno.",
+    "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de retorno com a parte responsável e, consequentemente, a impossibilidade de confirmação quanto ao recolhimento das custas e emolumentos devidos."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-custas-aguardando-pagamento", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Emolumentos enviados — aguardando pagamento",
+   "descricao": "As custas foram enviadas ao advogado; o ato sai assim que o pagamento for confirmado.",
+   "assunto": "",
+   "arquivo": "emolumentos pendentes - matr. {matricula}",
+   "corpo": [
+    "Em atenção ao Ofício em epígrafe, por meio do qual foi determinada a {ato_pedido} incidente sobre o imóvel objeto da matrícula imobiliária nº {matricula}, informamos a {pronome} que a ordem judicial ainda não foi cumprida, em razão da ausência de recolhimento dos emolumentos devidos pela prática do ato.",
+    "Esclarecemos que as respectivas custas foram encaminhadas em {data_contato}, por meio do contato telefônico nº {telefone}, pertencente a {advogado}, permanecendo pendente, até a presente data, a confirmação do pagamento.",
+    "Dessa forma, tão logo seja comprovado o recolhimento dos emolumentos devidos, serão adotadas as providências necessárias ao cumprimento da determinação judicial, mediante a {ato_pedido} na referida matrícula."
+   ],
+   "fecho": "f6-disposicao"},
+
+  {"id": "rgi-exigencia-pendente", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Exigência pendente (Nota de Exigência anexa)",
+   "descricao": "Para cumprir a ordem é preciso atender a Nota de Exigência do protocolo.",
+   "assunto": "",
+   "arquivo": "nota de exigencia - protocolo {protocolo}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe e, em atenção ao quanto determinado, cumpre-nos esclarecer que, para o regular atendimento da ordem, faz-se imprescindível o prévio e integral cumprimento das exigências consignadas na Nota de Exigência expedida sob o Protocolo nº {protocolo}, a qual segue anexa ao presente.",
+    "[Em síntese, {resumo_exigencias}]",
+    "Ressalte-se que esta Serventia permanece à disposição para o cumprimento da determinação judicial, desde que observados os pressupostos inerentes à qualificação registral, sob o estrito exame da regularidade formal do título, em conformidade com a legislação e as normas de regência aplicáveis."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-nota-devolutiva-titulo-judicial", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Título judicial com Nota Devolutiva",
+   "descricao": "O título foi qualificado e voltou com Nota Devolutiva anexa.",
+   "assunto": "Matrícula n.º {matricula} deste CRI",
+   "arquivo": "nota devolutiva - protocolo {protocolo} - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe, e vimos à presença de {pronome} informar que o registro da {objeto_titulo}, foi devidamente analisado sob o protocolo nº {protocolo}, tendo sido constatadas pendências que demandam regularização para correta e adequada qualificação registral, conforme detalhado na Nota Devolutiva expedida por esta serventia, a qual segue anexa ao presente ofício.",
+    "Informamos que esta serventia permanece integralmente à disposição para o fiel e exato cumprimento das determinações estabelecidas."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-nota-exigencia-resumo", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Pendências na qualificação (com resumo)",
+   "descricao": "Explica em síntese as pendências da Nota de Exigência anexa.",
+   "assunto": "",
+   "arquivo": "pendencias - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do Ofício em epígrafe, referente ao {objeto} do imóvel objeto da matrícula nº {matricula} deste Serviço Registral.",
+    "Após a qualificação registrária do título apresentado, verificou-se a existência de pendências que impedem, neste momento, a prática dos atos determinados, conforme Nota de Exigência emitida por esta serventia, a qual segue anexa ao presente ofício.",
+    "Em síntese, {resumo_exigencias}",
+    "Diante disso, não foi possível efetivar, por ora, os atos registrais determinados, sendo necessária a regularização das pendências apontadas na Nota de Exigência para que o título possa prosseguir em sua qualificação registral e, estando apto, receber os respectivos atos.",
+    "Dessa forma, permanecemos à inteira disposição para o cumprimento da determinação, tão logo sejam regularizadas as pendências apontadas."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-solicita-esclarecimento", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Pedido de esclarecimento ao juízo",
+   "descricao": "A ordem é ambígua ou não permite identificar o imóvel/ato.",
+   "assunto": "",
+   "arquivo": "solicitacao de esclarecimentos - matr. {matricula}",
+   "corpo": [
+    "Cumprimentando-o(a) respeitosamente, vimos, por meio do presente, solicitar esclarecimentos quanto ao teor da decisão e do ofício encaminhados a esta serventia, que tratam da {objeto_esclarecimento}[, referente à matrícula n.º {matricula}].",
+    "{exposicao}",
+    "Assim, a fim de evitar equívocos no cumprimento da ordem judicial e garantir a exatidão dos atos registrais, solicitamos a gentileza de esclarecer {ponto_esclarecer}."
+   ],
+   "fecho": "f7"},
+
+  {"id": "rgi-penhora-sem-ordem-expressa", "setor": "RGI", "grupo": "Ordem não cumprida",
+   "rotulo": "Mandado de penhora sem ordem expressa ao cartório",
+   "descricao": "Chegou auto/mandado de penhora sem dizer qual ato o cartório deve praticar.",
+   "assunto": "Mandado de Penhora – Matr. {matricula}",
+   "arquivo": "penhora sem ordem expressa - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento, por intermédio de Oficial de Justiça, do Auto de Penhora e do Mandado de Penhora, Avaliação e Averbação, referentes aos autos nº {processo}, tendo por objeto [o percentual de {fracao_penhora} d]o imóvel matriculado sob o nº {matricula} neste Registro.",
+    "Todavia, verifica-se que os referidos documentos não contêm determinação expressa dirigida a esta Serventia quanto à prática de ato registral, não sendo especificado o ato a ser praticado na matrícula acima indicada.",
+    "Dessa forma, solicita-se, respeitosamente, que {pronome} determine o esclarecimento quanto à providência pretendida, com a expressa indicação do ato a ser praticado por este Registro de Imóveis, a fim de viabilizar o regular cumprimento da diligência."
+   ],
+   "fecho": "sem-mais-disposicao"},
+
+  {"id": "rgi-retificacao-manifestacao-favoravel", "setor": "RGI", "grupo": "Informações ao juízo",
+   "rotulo": "Retificação de área judicial — sem óbice registral",
+   "descricao": "Informa ao juízo que não há impedimento registral à retificação (acréscimo > 10% impediu a via administrativa).",
+   "assunto": "Retificação de Área – Matr. {matricula}",
+   "arquivo": "retificacao de area - matr. {matricula}",
+   "corpo": [
+    "Em cumprimento ao determinado no Ofício nº {oficio_recebido} expedido por {pronome}, vimos, prestar as informações requisitadas acerca do pedido de Retificação de Área e Registro Imobiliário Consensual requerido por {requerente}, referente à Matrícula nº {matricula} deste Serviço Registral.",
+    "Após análise dos registros e assentamentos constantes nos livros desta serventia, informa-se que, no que tange à matrícula em epígrafe, não foi verificada a existência de qualquer impedimento de natureza registral, litígio entre confrontantes, ônus real, gravame, penhora, hipoteca, arresto, sequestro, usufruto ou qualquer outra restrição que possa obstaculizar o regular processamento e posterior registro da retificação de área pleiteada nos presentes autos.",
+    "[{situacao_imovel}]",
+    "Ressalva-se, contudo, que o único fator que inviabilizou o prosseguimento da retificação pela via administrativa foi a expressiva discrepância entre a área originalmente registrada ({area_registrada}) e a área apurada mediante levantamento topográfico ({area_apurada}), correspondente a um acréscimo superior a 10% (dez por cento) da área matriculada, o que, nos termos do art. 213, §3º, da Lei nº 6.015/1973, e consoante a Nota de Devolução lavrada por este Cartório (Protocolo nº {protocolo}, de {data_protocolo}), afasta a possibilidade de retificação pela via extrajudicial, sem que isso implique qualquer mácula à regularidade do imóvel ou controvérsia entre as partes.",
+    "[{confrontantes}]",
+    "Diante do exposto, este Cartório de Registro de Imóveis manifesta-se favoravelmente ao prosseguimento e ao eventual acolhimento do pedido de retificação de área da Matrícula nº {matricula}, declarando que, do ponto de vista registral, não há qualquer impedimento, litígio ou outra forma onerosa que obstaculize o registro da retificação, estando esta serventia apta a proceder ao respectivo ato registral tão logo sobrevenha o competente mandado judicial determinando a averbação da retificação de área para {area_apurada}, nos termos em que deferido por {pronome}."
+   ],
+   "fecho": "f1"},
+
+  {"id": "rgi-notificacao-tabelionato-usucapiao", "setor": "RGI", "grupo": "Iniciativa do cartório",
+   "rotulo": "Pedido ao 2º Tabelionato: notificar Município (usucapião)",
+   "descricao": "Pede ao Tabelionato que notifique o Município no procedimento de usucapião extrajudicial.",
+   "referencia": false, "rotulo_assunto": "Ref.:", "destinatario": "tabeliao-2-morrinhos",
+   "assunto": "Notificação extrajudicial",
+   "arquivo": "oficio RTD - notificar municipio sobre usucapiao - processo {processo_usucapiao}",
+   "corpo": [
+    "Ao cumprimentá-{lo_la}, informamos que foi requerido nesse Cartório de Registro de Imóveis a notificação extrajudicial de confrontante (protocolo {protocolo_notificacao}) para procedimento de usucapião extrajudicial, processo n.º {processo_usucapiao}, protocolado sob o n.º {protocolo}, em {data_protocolo}.",
+    "Considerando a necessidade de ciência dos entes públicos acerca do referido procedimento, solicitamos a V.Sª. os bons préstimos no sentido de proceder à notificação extrajudicial do Município de Morrinhos/GO, conforme documento anexo.",
+    "A notificação tem por finalidade dar ciência ao ente municipal acerca do pedido, para que possa, no prazo legal, manifestar-se quanto à eventual existência de interesse público, dominialidade ou qualquer óbice ao reconhecimento da usucapião, bem como para que tome ciência do inteiro teor dos trabalhos técnicos realizados pelo responsável Sr. {responsavel_tecnico} (CREA n.º {crea}) consistentes, dentre outros, em memorial descritivo e planta do imóvel.",
+    "Solicitamos ainda os bons préstimos de encaminhar os valores referentes aos emolumentos devidos, bem como os dados bancários para depósito/transferência no seguinte endereço eletrônico: registro@cartoriomorrinhos.com.br."
+   ],
+   "fecho": "ensejo"},
+
+  {"id": "rgi-inalienabilidade-pro-morar", "setor": "RGI", "grupo": "Iniciativa do cartório",
+   "rotulo": "Município: manifestação sobre inalienabilidade (Pró-Morar)",
+   "descricao": "Pede ao Município que se manifeste sobre a extinção da cláusula (art. 3º-B da Lei Municipal 4.330/2026).",
+   "referencia": false, "destinatario": "prefeito-morrinhos",
+   "assunto": "Solicitação de manifestação acerca da extinção de cláusula de inalienabilidade – Matrícula nº {matricula}",
+   "arquivo": "cancelamento de inalienabilidade - matr. {matricula} - prefeitura municipal de morrinhos-GO",
+   "corpo": [
+    "Este Serviço de Registro de Imóveis, no exercício de suas atribuições legais, vem, respeitosamente, por meio do presente, solicitar manifestação do Município de Morrinhos-GO acerca da extinção da cláusula restritiva de inalienabilidade incidente sobre o imóvel objeto da matrícula nº {matricula} desta Serventia.",
+    "A referida restrição foi estabelecida no Instrumento Particular de Doação nº {n_instrumento}, emitido pelo Município de Morrinhos-GO no âmbito do Programa Pró-Morar, tendo o instrumento sido assinado em {data_assinatura}.",
+    "Conforme consta do referido instrumento, foi estabelecida cláusula de inalienabilidade pelo prazo de {prazo}, contados da data de sua assinatura. Assim, considerando a data de assinatura do instrumento, o prazo originalmente estabelecido para a restrição encerrou-se em {data_fim}.",
+    "Ocorre que, posteriormente, foi publicada a Lei Municipal nº 4.330, de 19 de maio de 2026, que alterou a Lei Municipal nº 1.535/1997, relativa ao Programa Pró-Morar, passando a disciplinar especificamente a extinção das cláusulas restritivas incidentes sobre os imóveis objeto do programa.",
+    "Nos termos do art. 3º-B da Lei Municipal nº 4.330/2026:",
+    "“A extinção da cláusula restritiva que onera o imóvel não se dará de forma automática, devendo o Oficial Tabelião notificar o Município para manifestação a respeito.”",
+    "Dessa forma, embora o prazo de {prazo} previsto originalmente no Instrumento Particular de Doação nº {n_instrumento} tenha se encerrado em {data_fim}, a legislação municipal atualmente vigente determina que a extinção da cláusula restritiva não ocorra de forma automática, devendo o Município ser previamente notificado para manifestação.",
+    "Ressalta-se, ainda, que a legislação municipal estabelece regras específicas quanto à alienação dos imóveis vinculados ao Programa Pró-Morar, inclusive quanto ao prazo de permanência do beneficiário e às consequências decorrentes de eventual alienação em desacordo com as condições estabelecidas pelo programa.",
+    "Diante disso, e em cumprimento ao disposto no art. 3º-B da Lei Municipal nº 4.330/2026, encaminha-se o presente expediente para que esse Município, por intermédio da autoridade competente, manifeste-se expressamente acerca da extinção da cláusula de inalienabilidade incidente sobre o imóvel objeto da matrícula nº {matricula}, informando, especialmente, se anui ao cancelamento da referida restrição perante o Registro de Imóveis.",
+    "Solicita-se que a manifestação municipal seja formalizada por meio de documento oficial, devidamente subscrito pela autoridade competente, contendo posicionamento expresso quanto à manutenção ou ao cancelamento da cláusula restritiva, a fim de que o documento possa integrar o procedimento registral e subsidiar a análise do requerimento apresentado perante esta Serventia.",
+    "Por fim, esclarece-se que a presente solicitação tem por finalidade dar cumprimento à exigência de manifestação municipal prevista na legislação vigente, não constituindo, por si só, reconhecimento automático da extinção ou cancelamento da restrição, cuja análise será realizada no âmbito do procedimento registral, à vista da manifestação do Município e dos demais elementos pertinentes."
+   ],
+   "fecho": "sem-mais-apreco"},
+
+  {"id": "stc-inteiro-teor", "setor": "STC", "grupo": "Certidões",
+   "rotulo": "Certidão de inteiro teor anexa",
+   "descricao": "Envia a certidão de inteiro teor da matrícula pedida.",
+   "assunto": "Certidão atualizada da matrícula {matricula}",
+   "arquivo": "certidao de inteiro teor - matr. {matricula}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe, e em atendimento ao determinado, encaminhamos em anexo, para apreciação, a certidão de inteiro teor da matrícula {matricula}[, juntamente com {anexo_extra}]."
+   ],
+   "fecho": "f1-sem-pronome"},
+
+  {"id": "stc-inteiro-teor-emitida", "setor": "STC", "grupo": "Certidões",
+   "rotulo": "Certidão de inteiro teor emitida (órgão / SEI)",
+   "descricao": "Para órgãos estaduais com processo SEI: informa que a certidão foi emitida e segue anexa.",
+   "assunto": "Certidão de Inteiro Teor – Matr. {matricula}",
+   "arquivo": "oficio {oficio_recebido} - matr. {matricula}",
+   "corpo": [
+    "Em atenção ao Ofício nº {oficio_recebido}[, referente ao Processo SEI nº {processo_sei}], informamos que a Certidão de Inteiro Teor solicitada, relativa ao imóvel objeto da matrícula nº {matricula}, foi devidamente emitida.",
+    "Na oportunidade, encaminhamos a referida certidão em anexo, para conhecimento e as providências que entender cabíveis."
+   ],
+   "fecho": "sem-mais-estima"},
+
+  {"id": "stc-certidao-solicitada", "setor": "STC", "grupo": "Certidões",
+   "rotulo": "Certidão solicitada anexa (resposta por e-mail)",
+   "descricao": "Resposta curta a órgão (PGE, SEAD, AGEHAB…): segue a certidão; resposta só por e-mail.",
+   "assunto": "Solicita certidões",
+   "arquivo": "solicitacao de certidao - oficio {oficio_recebido}",
+   "corpo": [
+    "Atendendo ao contido no ofício em epígrafe[, assinado digitalmente em {data_assinatura_digital}], informamos que segue em anexo a Certidão requerida.",
+    "[A resposta está sendo apenas via e-mail ({email_resposta}).]"
+   ],
+   "fecho": "ensejo"},
+
+  {"id": "stc-ato-notarial", "setor": "STC", "grupo": "Certidões",
+   "rotulo": "Certidão de escritura / ato notarial anexa",
+   "descricao": "Envia certidão de escritura lavrada nas notas do cartório. Pode registrar gratuidade.",
+   "assunto": "Certidão de Escritura Pública",
+   "arquivo": "certidao de escritura - livro {livro} fls {folhas}",
+   "corpo": [
+    "Acusamos o recebimento do comunicado e, em atendimento ao determinado, encaminhamos, em anexo, para apreciação, a certidão atualizada da Escritura Pública de {natureza_ato}, lavrada aos {data_ato_curta}, às folhas {folhas}, do Livro {livro}, pelo Cartório do 1º Ofício de Notas e Registro de Imóveis da Comarca de Morrinhos-GO.",
+    "[{gratuidade.texto}]"
+   ],
+   "fecho": "f1-sem-pronome"},
+
+  {"id": "stc-negativa-pf", "setor": "STC", "grupo": "Busca de bens",
+   "rotulo": "Busca negativa — pessoa física (certidão negativa anexa)",
+   "descricao": "Nenhum imóvel em nome da pessoa (viva ou falecida).",
+   "assunto": "Busca de propriedade em nome de {nome_pesquisado}",
+   "arquivo": "busca de propriedade em nome de {nome_pesquisado}",
+   "corpo": [
+    "Acusamos o recebimento do ofício em epígrafe, e em atendimento ao determinado, encaminhamos em anexo, para apreciação, a certidão negativa de propriedade atualizada em nome {pessoa.de} {nome_pesquisado}, {pessoa.inscrito} no CPF/MF sob o n.º {cpf}.",
+    "Após consulta em nosso acervo registral, não foram localizados bens imóveis urbanos ou rurais registrados na propriedade da referida pessoa física."
+   ],
+   "fecho": "f1-disposicao"},
+
+  {"id": "stc-negativa-pj", "setor": "STC", "grupo": "Busca de bens",
+   "rotulo": "Busca negativa — pessoa jurídica (CNPJ)",
+   "descricao": "Nenhum imóvel em nome da empresa/entidade.",
+   "assunto": "Solicitação de Certidão Positiva/Negativa de propriedade por CNPJ",
+   "arquivo": "busca de propriedade por CNPJ - {razao_social}",
+   "corpo": [
+    "Acusamos o recebimento do comunicado e, em atendimento ao determinado, encaminhamos, em anexo, para apreciação, a Certidão Negativa de Propriedade atualizada em nome da entidade {razao_social}, inscrita no CNPJ/MF sob o n.º {cnpj}.",
+    "Após consulta em nosso acervo registral, não foram localizados bens imóveis registrados em nome da referida pessoa jurídica."
+   ],
+   "fecho": "permanecemos-reiteramos"},
+
+  {"id": "stc-negativa-fundamentada", "setor": "STC", "grupo": "Busca de bens",
+   "rotulo": "Busca negativa fundamentada (juízo / reiteração)",
+   "descricao": "Versão mais detalhada, para juiz: pesquisa limitada ao acervo e aos dados do ofício.",
+   "assunto": "Busca de propriedade em nome de {nome_pesquisado}",
+   "arquivo": "busca por imoveis de {nome_pesquisado}",
+   "corpo": [
+    "Em atenção ao Ofício em epígrafe, no qual solicitou informações acerca de bens imóveis registrados em nome {pessoa.de} {nome_pesquisado}, CPF nº {cpf}[, filho(a) de {filiacao}], informamos a {pronome} que:",
+    "Após minuciosa consulta ao acervo registral deste Cartório, não foi localizado qualquer bem imóvel na atual propriedade de {nome_pesquisado}, CPF nº {cpf}, nos registros e matrículas desta serventia. Ressaltamos que a pesquisa foi realizada com base nos dados fornecidos no referido ofício, estando limitada ao acervo registral desta serventia.",
+    "Para os devidos fins, segue em anexo a Certidão Negativa de Propriedade expedida por esta serventia em nome do pesquisado, confirmando a ausência de bens imóveis registrados em seu nome neste Cartório."
+   ],
+   "fecho": "sem-mais-disposicao"},
+
+  {"id": "stc-busca-positiva", "setor": "STC", "grupo": "Busca de bens",
+   "rotulo": "Busca positiva — imóvel localizado",
+   "descricao": "Localizado imóvel em nome da pessoa; segue a certidão da matrícula.",
+   "assunto": "Busca de Propriedade em nome de {nome_pesquisado}",
+   "arquivo": "busca de propriedade em nome de {nome_pesquisado}",
+   "corpo": [
+    "Acusamos o recebimento do ofício expedido por {pronome}[ nos autos do Processo nº {processo}] e, em atendimento à solicitação, informamos que foi realizada consulta em nosso acervo registral, com o objetivo de verificar a existência de imóveis de propriedade de {nome_pesquisado}, {pessoa.inscrito} no CPF/MF sob o nº {cpf}.",
+    "Em resultado da pesquisa, foi localizado imóvel {urbano_rural} registrado em nome da referida pessoa, objeto da matrícula imobiliária nº {matricula}.",
+    "Para conhecimento e adoção das providências que {pronome} entender cabíveis, encaminhamos, em anexo, a respectiva certidão atualizada da matrícula."
+   ],
+   "fecho": "f-protestos-busca"},
+
+  {"id": "stc-car-promotoria", "setor": "STC", "grupo": "Busca de bens",
+   "rotulo": "Imóvel rural localizado pelo CAR (Promotoria)",
+   "descricao": "Identifica a matrícula do imóvel rural pelo número do CAR e envia a certidão.",
+   "rotulo_assunto": "Ref.:", "destinatario": "mp-2promotoria-morrinhos",
+   "assunto": "Autos Extrajudiciais nº {autos_extrajudiciais}",
+   "arquivo": "oficio {oficio_recebido} - matr. {matricula}",
+   "corpo": [
+    "Em atenção ao Ofício nº {oficio_recebido}, expedido nos autos extrajudiciais nº {autos_extrajudiciais}, por meio do qual foi solicitada a identificação e o encaminhamento de certidão de inteiro teor atualizada referente ao imóvel rural denominado {denominacao_imovel}, identificado no Cadastro Ambiental Rural – CAR sob o nº {car}, informamos que, após consulta ao acervo registral desta Serventia, foi localizada a Matrícula nº {matricula}, na qual consta a averbação referente ao registro do CAR mencionado, conforme {ato_car}.",
+    "Conforme consta do referido fólio real, o imóvel é de propriedade de {proprietarios}.",
+    "Dessa forma, encaminhamos, em anexo ao presente ofício, cópia da respectiva matrícula, para conhecimento e adoção das providências que entender cabíveis."
+   ],
+   "fecho": "f3"},
+
+  {"id": "stc-comunicacao-incra", "setor": "STC", "grupo": "Comunicações periódicas",
+   "rotulo": "Comunicação mensal ao INCRA (imóveis rurais)",
+   "descricao": "Modificações nas matrículas de imóveis rurais do mês anterior (art. 22, §7º, Lei 4.947/66).",
+   "referencia": false, "destinatario": "incra-sr-go",
+   "assunto": "Comunicação dos Serviços de Registro de Imóveis ao INCRA sobre as modificações ocorridas nas matrículas dos imóveis rurais",
+   "arquivo": "Comunicacao dos Servicos de Registro de Imoveis ao INCRA sobre as modificacoes ocorridas nas matriculas dos imoveis rurais - {mes_referencia}",
+   "corpo": [
+    "Atendendo o disposto no §7º do artigo 22 da Lei Federal nº 4.947, de 06 de abril de 1966 e no artigo 4º, do Decreto Federal nº 4.449, de 30 de outubro de 2002, informamos a V.S.ª as modificações ocorridas nas matrículas dos imóveis rurais situados na circunscrição desta Serventia, referente ao mês de {mes_referencia}, conforme certidões em anexo."
+   ],
+   "fecho": "ensejo"},
+
+  {"id": "stn-comunica-substabelecimento", "setor": "STN", "grupo": "Comunicação a outro tabelionato",
+   "rotulo": "Comunica substabelecimento de procuração",
+   "descricao": "Avisa o tabelionato de origem que a procuração lavrada lá foi substabelecida aqui.",
+   "referencia": false,
+   "assunto": "{instrumento.nosso} de procuração",
+   "arquivo": "{instrumento.nosso} de Procuração",
+   "corpo": [
+    "A par de cumprimentá-{lo_la}, informamos que o Instrumento Público de {instrumento.nome}, lavrado em {data_procuracao}, no livro {livro_procuracao}, fls. {folhas_procuracao}, nas suas Notas, foi SUBSTABELECIDO {reserva} a {substabelecido}, os poderes {poderes}[ outorgados por {outorgante}], conforme Instrumento de {instrumento.nosso} lavrado em {data_nosso_ato}, às folhas {folhas_nosso_ato}, no Livro {livro_nosso_ato}, pelo Cartório do 1º Ofício de Notas e Registro de Imóveis de Morrinhos/GO."
+   ],
+   "fecho": "ensejo-disposicao"},
+
+  {"id": "stn-comunica-revogacao", "setor": "STN", "grupo": "Comunicação a outro tabelionato",
+   "rotulo": "Comunica revogação de procuração",
+   "descricao": "Avisa o tabelionato de origem que a procuração lavrada lá foi revogada aqui.",
+   "referencia": false,
+   "assunto": "Revogação de Procuração",
+   "arquivo": "Revogação de Procuração",
+   "corpo": [
+    "A par de cumprimentá-{lo_la}, informamos que o Instrumento Público de Procuração lavrada em suas notas, no livro n.º {livro_procuracao}, às folhas {folhas_procuracao}, em data de {data_procuracao}, outorgada por: {outorgante}, foi REVOGADA, conforme Escritura Pública de Revogação de Mandato, lavrada em {data_nosso_ato}, Livro {livro_nosso_ato} fls. {folhas_nosso_ato} pelo Cartório do 1º Ofício de Notas e Registro de Imóveis da Comarca de Morrinhos/GO."
+   ],
+   "fecho": "ensejo-disposicao"},
+
+  {"id": "stn-comunica-dissolucao-ue", "setor": "STN", "grupo": "Comunicação a outro tabelionato",
+   "rotulo": "Comunica dissolução de união estável",
+   "descricao": "Avisa o tabelionato onde a união foi reconhecida, para as anotações.",
+   "referencia": false,
+   "assunto": "Dissolução de união estável",
+   "arquivo": "Dissolução de União Estável - Livro {livro_nosso_ato}, Fls. {folhas_nosso_ato}",
+   "corpo": [
+    "A par de cumprimentá-{lo_la}, comunicamos a V.S.ª, para que sejam realizadas as devidas anotações, que a União Estável reconhecida por meio da Escritura Pública de Reconhecimento de União Estável, lavrada em {data_ue}, às fls. {folhas_procuracao}, no Livro n.º {livro_procuracao}, em suas Notas, tendo como outorgantes e reciprocamente outorgados o Sr. {convivente1} e a Sra. {convivente2}, foi DISSOLVIDA, {partilha}.",
+    "A dissolução foi realizada conforme Escritura Pública de Dissolução de União Estável, lavrada em {data_nosso_ato}, às fls. {folhas_nosso_ato}, do Livro n.º {livro_nosso_ato}, em nossas Notas, conforme cópia anexa."
+   ],
+   "fecho": "ensejo-disposicao"},
+
+  {"id": "stn-mp-resolucao-571", "setor": "STN", "grupo": "Ministério Público",
+   "rotulo": "MP: escritura com menor ou incapaz (Res. CNJ 571)",
+   "descricao": "Pede a manifestação do MP para lavrar inventário/sobrepartilha com interessado menor ou incapaz.",
+   "referencia": false, "destinatario": "mp-1promotoria-morrinhos",
+   "assunto": "Lavratura de Escritura Pública de {tipo_escritura} contendo menor ou incapaz",
+   "arquivo": "Ministerio Público Resolução 571 - menor ou incapaz",
+   "corpo": [
+    "A par de cumprimentá-{lo_la} e nos termos da Resolução n.º 571, de 27 de agosto de 2024, do Conselho Nacional de Justiça - CNJ, comunicamos a {pronome} que pelo Pedido n.º {pedido_tabelionato} deste Tabelionato de Notas foi requerido a Lavratura de Escritura Pública de {tipo_escritura} contendo interessado {interessado.tipo}.",
+    "Atendendo à solicitação e à vontade das partes envolvidas, e respeitando os requisitos legais previstos na mencionada Resolução, vimos, com o devido respeito, expor e requerer o seguinte:",
+    "Fomos demandados por: {qualificacao_apresentantes}, a proceder com a Lavratura da Escritura Pública de {tipo_escritura} em razão do falecimento de {qualificacao_falecido}; (Docs anexo).",
+    "Para dar prosseguimento à Lavratura da Escritura Pública de {tipo_escritura}, que envolve um interessado {interessado.tipo}, é imprescindível a manifestação favorável do Ministério Público, conforme disposto no artigo 12-A, §3º da Resolução 571/CNJ. {qualificacao_incapaz}; (Docs anexo).",
+    "[Foi apresentado: {documentos_apresentados}]",
+    "Dessa forma, solicitamos, por meio deste, a manifestação referente a este expediente (anexo), com o intuito específico de permitir a Lavratura da Escritura Pública de {tipo_escritura} envolvendo {interessado.o_a}, referente aos bens deixados pelo de cujus acima mencionado."
+   ],
+   "fecho": "ensejo"},
+
+  {"id": "stn-mp-resposta-andamento", "setor": "STN", "grupo": "Ministério Público",
+   "rotulo": "MP: escritura parada por falta de documentos",
+   "descricao": "Resposta a despacho do MP: as partes não trouxeram a documentação; escritura arquivada.",
+   "destinatario": "mp-1promotoria-morrinhos",
+   "assunto": "",
+   "arquivo": "Esclarecimentos sobre a Tramitação da Escritura Pública de {tipo_escritura}",
+   "corpo": [
+    "Em atenção ao despacho administrativo {n_despacho}, exarado por essa Douta Promotoria de Justiça, informo que, até a presente data, não foi encaminhada a documentação pelos requerentes, embora tenha sido solicitada em {data_solicitacao} e reiterada em {data_reiteracao}, mediante contato com o advogado representante das partes.",
+    "Diante disso, a Escritura Pública de {tipo_escritura} encontra-se arquivada nesta serventia.",
+    "Esclarece-se, ainda, que não houve qualquer andamento ou juntada de documentos até o presente momento."
+   ],
+   "fecho": "ensejo-quaisquer"},
+
+  {"id": "stn-busca-negativa-inventario", "setor": "STN", "grupo": "Respostas",
+   "rotulo": "Busca negativa de inventário / nomeação de inventariante",
+   "descricao": "Não há escritura de inventário nem de nomeação de inventariante do espólio.",
+   "assunto": "",
+   "arquivo": "busca de inventario - espolio de {falecido}",
+   "corpo": [
+    "Em atenção ao Ofício n.º {oficio_recebido}[, datado de {data_oficio_recebido}], informamos que, após as devidas buscas realizadas nos livros e sistemas deste Cartório do 1º Ofício de Notas e Registro de Imóveis da Comarca de Morrinhos/GO, não foi localizada a lavratura de Escritura Pública de Inventário Extrajudicial de Bens, tampouco Escritura Pública de Nomeação de Inventariante, referente ao ESPÓLIO DE {falecido}, inscrito no CPF n.º {cpf}.",
+    "Assim, até a presente data, não consta nesta serventia qualquer ato notarial relacionado a inventário extrajudicial ou nomeação de inventariante em nome da pessoa acima mencionada."
+   ],
+   "fecho": "sendo-havia"},
+
+  {"id": "stn-receita-cpf-falecido", "setor": "STN", "grupo": "Órgãos",
+   "rotulo": "Receita Federal: regularizar CPF de falecido (DOI)",
+   "descricao": "Pede a regularização do CPF do(a) falecido(a) para emitir a DOI da escritura.",
+   "referencia": false, "destinatario": "receita-federal-caldas-novas",
+   "assunto": "Cadastro de Pessoa Física (CPF) - Falecimento",
+   "arquivo": "Receita Federal - Solicitar Ativação de CPF",
+   "corpo": [
+    "Atendendo ao pedido e vontade da parte interessada, e observados os requisitos legais (Lei Federal n.º 11.441, de 04 de janeiro de 2007, e demais disposições legais correlatas), vimos, com o devido respeito, à presença de V.Sª expor e requerer o seguinte:",
+    "Fomos demandados a lavratura da Escritura Pública de {tipo_escritura}, do espólio de: {qualificacao_falecido};",
+    "Contudo, para a lavratura da Escritura Pública de {tipo_escritura}, se faz necessário a apresentação de alguns documentos, em especial o Cadastro de Pessoa Física (CPF) {genero_falecido.o_a} com a finalidade especial de emitir a DOI (Declaração sobre Operações Imobiliárias).",
+    "Assim, considerando esta situação fática, vimos através deste REQUERER que seja realizada a regularização do CPF {genero_falecido.o_a}, para o fim específico de se emitir a DOI diante da referida Escritura."
+   ],
+   "fecho": "ensejo"},
+
+  {"id": "stn-censec-exclusao-testamento", "setor": "STN", "grupo": "Órgãos",
+   "rotulo": "CENSEC: exclusão de testamento no RCTO",
+   "descricao": "Pede à CENSEC a exclusão de testamento enviado com erro ao RCTO (1ª pessoa de quem assina).",
+   "referencia": false, "rotulo_assunto": "Ref.:", "destinatario": "censec",
+   "assunto": "Exclusão de testamento no Registro Central de Testamentos Online - RCTO",
+   "arquivo": "Censec - Exclusão de testamento - {testador}",
+   "corpo": [
+    "Eu, {quem_assina}, abaixo assinado, solicito a exclusão do testamento de {testador}, lavrado em {data_testamento}, Livro {livro}, fls. {folhas}, em razão de {motivo_exclusao}, referente à serventia do 1º Ofício de Notas e Registro de Imóveis da cidade de Morrinhos/GO, CNS: 02.618-7.",
+    "Diante do exposto, autorizo essa Central a promover a exclusão de outras informações cuja duplicidade seja de fácil constatação."
+   ],
+   "fecho": "aproveito-estima"},
+
+  {"id": "stn-itbi-parecer-municipio", "setor": "STN", "grupo": "Órgãos",
+   "rotulo": "Município: parecer sobre incidência de ITBI",
+   "descricao": "Pede ao Município a avaliação e a manifestação sobre incidência ou isenção de ITBI.",
+   "referencia": false,
+   "assunto": "Solicitação de parecer sobre a incidência ou não do imposto de transmissão onerosa inter vivos ou sua isenção",
+   "arquivo": "Ofício Município de Morrinhos - Parecer sobre o ITBI - matr. {matricula}",
+   "corpo": [
+    "Com o habitual respeito e acatamento, solicito que seja submetido à apreciação o procedimento de {procedimento}, em trâmite em nossa serventia pela guia n.º {guia}, de {data_guia}, para que se verifique a incidência ou não de imposto de transmissão onerosa inter vivos ou sua isenção.",
+    "O procedimento conta como objeto o {descricao_imovel}, objeto da matrícula número {matricula}, do Cartório de Registro de Imóveis de Morrinhos/GO.",
+    "Partes/proprietários: {partes_proporcoes}",
+    "[Divisão/desmembramento: {divisao}]",
+    "Para que se lavre referida escritura, faz-se necessário a manifestação do órgão arrecadador competente atribuindo o valor ao bem e fazendo a devida tributação se for o caso, indicando sua incidência ou não, bem como sua isenção.",
+    "Cabe ressaltar da solidariedade do Tabelião pelo pagamento do ITBI devido pelo contribuinte ou responsável, nos atos praticados por esta serventia (art. 63, Lei Complementar Municipal n.º 005, de 15/12/2000).",
+    "Assim, considerando como exigência a solicitação em voga, vimos através deste REQUERER a devida manifestação municipal acerca da avaliação dos lotes/áreas desmembrados, bem como da incidência ou não de tributo, bem como sua isenção, nos moldes do §1º, inc. IV do art. 51 e art. 53, inc. II, ambos da Lei Complementar Municipal n.º 005, de 15/12/2000."
+   ],
+   "fecho": "ensejo-disposicao"},
+
+  {"id": "stn-guia-escritura-atualizada", "setor": "STN", "grupo": "Órgãos",
+   "rotulo": "Município: guia para escritura atualizada",
+   "descricao": "A guia da Secretaria de Habitação apresentada está vencida; pede uma atualizada.",
+   "referencia": false,
+   "assunto": "Solicitação de Guia para Escritura atualizada",
+   "arquivo": "Municipio - Solicitação de Guia de Escritura - matr. {matricula}",
+   "corpo": [
+    "O Cartório de Registro de Imóveis e Tabelionato de Notas desta Comarca vem, respeitosamente, à presença de {pronome}, expor e requerer o que segue.",
+    "Foi apresentado a esta Serventia pedido de n.º {pedido_tabelionato}, referente a lavratura de Escritura de {tipo_escritura}, onde foi apresentada Guia para Escritura n.º {n_guia_escritura}, expedida em {data_guia_escritura}, pela Secretaria Municipal de Habitação de Morrinhos, referente ao {descricao_imovel}, Matrícula {matricula}, do Livro 02 – Registro Geral, deste Cartório de Registro de Imóveis, com autorização de venda em favor de {beneficiario}[, inscrito no CPF/MF sob o n.º {cpf}].",
+    "Diante do exposto, considerando que a guia apresentada encontra-se com data do ano {ano_guia}, faz-se necessária a apresentação da guia para escritura atualizada, expedida pela Secretaria Municipal de Habitação de Morrinhos, para que seja possível darmos continuidade ao ato notarial."
+   ],
+   "fecho": "ensejo"},
+
+  {"id": "stn-banco-anuencia-credor", "setor": "STN", "grupo": "Órgãos",
+   "rotulo": "Banco: anuência do credor para escritura",
+   "descricao": "Imóvel gravado por cédula/penhor: pede anuência ou ciência do banco credor.",
+   "referencia": false,
+   "assunto": "Anuência do Credor",
+   "arquivo": "anuencia do credor - matr. {matricula}",
+   "corpo": [
+    "Foi solicitado a lavratura de Escritura de {tipo_escritura}, pelos condôminos {condominos}, onde consta o imóvel objeto da Matrícula de número {matricula}, gravado sob os {averbacoes}, os respectivos {onus_bancario}, nos termos das {titulos_credito}.",
+    "Diante da existência das referidas restrições, faz-se necessária a apresentação de anuência expressa e/ou ciência formal do Banco credor quanto à realização da escritura, bem como quanto à manutenção das garantias/restrições constituídas sobre o imóvel."
+   ],
+   "fecho": "ensejo-disposicao"},
+
+  {"id": "adm-livro-diario-auxiliar", "setor": "ADM", "grupo": "Diretoria do Foro",
+   "rotulo": "Envia o Livro Diário Auxiliar do exercício",
+   "descricao": "Envio anual ao Juiz Diretor do Foro (art. 11 do Prov. 45/2015-CNJ e art. 187, §1º, do CNPFE-GO).",
+   "referencia": false, "destinatario": "diretor-foro-morrinhos",
+   "assunto": "Livro Diário Auxiliar – exercício {ano_exercicio}",
+   "arquivo": "MM Juiz Diretor do Foro - Encaminha Livro Diario Auxiliar {ano_exercicio}",
+   "despedida": "Respeitosamente,",
+   "corpo": [
+    "A par de cumprimentá-{lo_la}, nos termos do art. 11 do Provimento nº 45/2015-CNJ e art. 187, §1º, do CNPFE-CGJ/GO, encaminhamos em anexo o Livro Diário Auxiliar relativo ao exercício {ano_exercicio}."
+   ],
+   "fecho": "ensejo-vexa"},
+
+  {"id": "adm-comunica-ferias", "setor": "ADM", "grupo": "Diretoria do Foro",
+   "rotulo": "Comunica férias do titular",
+   "descricao": "Comunica ao Diretor do Foro as férias do titular e quem responde pela serventia.",
+   "referencia": false, "destinatario": "diretor-foro-morrinhos",
+   "assunto": "Férias (comunica)",
+   "arquivo": "MM Juiz Diretor Foro - Comunica Ferias",
+   "corpo": [
+    "A par de cumprimentá-{lo_la}, sirvo-me do presente para comunicar a {pronome} que, para gozo de férias, estarei ausente da Serventia da qual sou titular durante o período de {inicio_ferias} a {fim_ferias}, sem prejuízo da continuidade dos serviços delegados.",
+    "Durante minha ausência responderá pelo respectivo serviço o Substituto {substituto_responsavel}, designado nos termos do art. 20, §5º, da Lei Federal nº 8.935/1994 – LNR.[ Também estarão na Serventia os Substitutos {demais_substitutos}, nomeados conforme art. 20, §4º, LNR.]",
+    "Ressalvo que, considerada a autonomia funcional assegurada pelos arts. 21, 28 e 41 da precitada Lei, minha ausência em virtude de férias poderá ser intermitente, caso necessário para a manutenção da prestação regular dos serviços e segundo meu prudente arbítrio."
+   ],
+   "fecho": "aproveito-admiracao"},
+
+  {"id": "adm-nomeacao-substituto", "setor": "ADM", "grupo": "Diretoria do Foro",
+   "rotulo": "Encaminha nome de substituto(a)",
+   "descricao": "Comunica ao Diretor do Foro o(a) substituto(a) nomeado(a) (art. 20, §2º, Lei 8.935/94).",
+   "referencia": false, "destinatario": "diretor-foro-morrinhos",
+   "assunto": "Encaminha o nome do(a) Substituto(a)",
+   "arquivo": "MM Juiz Diretor Foro - Nomeacao Substituto - {nome_substituto}",
+   "corpo": [
+    "Nos termos do art. 20, §2º, da Lei Federal nº 8.935/94, venho por meio deste encaminhar a {pronome} o nome do(a) Substituto(a) (§4º) deste Delegatário: {nome_substituto}[, CPF: {cpf}]. Em anexo, o Termo de Posse, Compromisso e Exercício.",
+    "Requer, pois, o devido registro nos anais desse Juízo e no Sistema Extrajudicial Eletrônico – SEE."
+   ],
+   "fecho": "aproveito-admiracao"},
+
+  {"id": "resposta-livre", "setor": "*", "grupo": "Geral",
+   "rotulo": "Resposta livre",
+   "descricao": "Para o caso que não tem modelo: escreva o corpo; cabeçalho, destinatário, fecho e assinatura saem prontos.",
+   "assunto": "[{assunto_livre}]",
+   "arquivo": "{arquivo_livre}",
+   "corpo": [
+    "{texto_livre}"
+   ],
+   "fecho": "escolha"}
+ ]
+}

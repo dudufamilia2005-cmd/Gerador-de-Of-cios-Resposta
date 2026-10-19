@@ -1,0 +1,5 @@
+.venv/
+saida/
+ferramentas/
+.claude/
+*.bat

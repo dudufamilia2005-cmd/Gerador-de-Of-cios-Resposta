@@ -1,0 +1,26 @@
+{
+ "_leia_me": [
+  "Quem assina os ofícios: nome e cargo, como saem no pé do documento. Lista",
+  "tirada das assinaturas dos ofícios de 2025-2026. A tela lembra, em cada",
+  "máquina, a última pessoa escolhida."
+ ],
+ "assinantes": [
+  {"id": "fabricio",          "nome": "Fabrício Brandão Coelho Vieira",              "cargo": "Tabelião e Registrador"},
+  {"id": "carlos-henrique",   "nome": "Carlos Henrique dos Prazeres",               "cargo": "Tabelião e Registrador Substituto"},
+  {"id": "joao-oswaldo",      "nome": "João Oswaldo de Almeida da Motta Filho",     "cargo": "Tabelião e Registrador Substituto"},
+  {"id": "daniella",          "nome": "Daniella Ananias da Silva Rodrigues Soares", "cargo": "Assessora Jurídica"},
+  {"id": "matheus-antonio",   "nome": "Matheus Antônio Alves dos Santos",           "cargo": "Escrevente"},
+  {"id": "lorrayne",          "nome": "Lorrayne Cristine Abrão de Sousa",           "cargo": "Escrevente"},
+  {"id": "eduardo",           "nome": "Eduardo Costa da Nóbrega",                   "cargo": "Escrevente"},
+  {"id": "jady",              "nome": "Jady Godoy Elias",                           "cargo": "Escrevente"},
+  {"id": "raiane",            "nome": "Raiane França Cardoso",                      "cargo": "Escrevente"},
+  {"id": "luiz-fernando",     "nome": "Luiz Fernando Ribeiro",                      "cargo": "Escrevente"},
+  {"id": "guilherme-richard", "nome": "Guilherme Richard Jesus Morais Medeiros",    "cargo": "Escrevente"},
+  {"id": "leticya",           "nome": "Leticya Garcia Pinheiro Ramos",              "cargo": "Escrevente"},
+  {"id": "meyrieli",          "nome": "Meyrieli Lucio Pires Laureano",              "cargo": "Escrevente"},
+  {"id": "kawan",             "nome": "Kawan Gregório Souza Marinho",               "cargo": "Escrevente"},
+  {"id": "matheus-henrique",  "nome": "Matheus Henrique Teixeira de Sousa",         "cargo": "Escrevente"},
+  {"id": "luiz-henrique",     "nome": "Luiz Henrique Ferreira dos Santos",          "cargo": "Escrevente"},
+  {"id": "maquel",            "nome": "Maquel dos Reis Bento",                      "cargo": "Escrevente"}
+ ]
+}

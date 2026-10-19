@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ofícios de resposta — 1º Ofício de Morrinhos</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="marca">
+    <div class="selo">1º</div>
+    <div>
+      <h1>Ofícios de resposta</h1>
+      <p>1º Ofício de Notas e Registro de Imóveis · Morrinhos/GO</p>
+    </div>
+  </div>
+  <div class="acoes-topo">
+    <span class="contagem" id="escolhido">nenhum modelo escolhido</span>
+  </div>
+</header>
+
+<main>
+  <div class="colunas">
+    <section class="cartao coluna">
+      <div class="cabeca">
+        <h2>Modelo</h2>
+        <input id="filtro" class="busca" placeholder="Filtrar…" autocomplete="off">
+      </div>
+      <div id="setores" class="abas" role="tablist"></div>
+      <div id="lista" class="lista"></div>
+    </section>
+
+    <section class="cartao coluna">
+      <div class="cabeca"><h2>Dados do ofício</h2></div>
+      <div id="formulario" class="campos">
+
+        <div class="grupo">
+          <h3>Numeração</h3>
+          <div class="linha">
+            <label for="setor">Setor</label>
+            <select id="setor"></select>
+          </div>
+          <div class="linha">
+            <label for="numero">Número</label>
+            <div class="junto">
+              <input id="ano" class="curto" inputmode="numeric" autocomplete="off" title="Ano">
+              <input id="numero" class="curto" inputmode="numeric" autocomplete="off" placeholder="000">
+              <span id="sugestao" class="dica-linha"></span>
+            </div>
+          </div>
+          <div class="linha">
+            <label for="data">Data</label>
+            <input id="data" type="date">
+          </div>
+        </div>
+
+        <div class="grupo">
+          <h3>Destinatário</h3>
+          <div class="linha">
+            <label for="cadastro">Cadastro</label>
+            <select id="cadastro"></select>
+          </div>
+          <div class="linha">
+            <label for="tratamento">Tratamento</label>
+            <select id="tratamento"></select>
+          </div>
+          <div class="linha">
+            <label for="dest-nome">Nome</label>
+            <input id="dest-nome" autocomplete="off" placeholder="Dr. Fulano de Tal">
+          </div>
+          <div class="linha topo-label">
+            <label for="dest-linhas">Cargo e órgão<span class="opcional"> (uma por linha)</span></label>
+            <textarea id="dest-linhas" rows="3" placeholder="MM. Juiz de Direito&#10;Poder Judiciário&#10;1ª Vara Cível"></textarea>
+          </div>
+          <div class="linha">
+            <label for="dest-cidade">Cidade</label>
+            <input id="dest-cidade" autocomplete="off" placeholder="Morrinhos/GO">
+          </div>
+          <div class="linha">
+            <label for="vocativo">Vocativo</label>
+            <input id="vocativo" autocomplete="off" placeholder="Excelentíssimo,">
+          </div>
+        </div>
+
+        <div class="grupo" id="grupo-referencia">
+          <h3>Ofício recebido</h3>
+          <div class="linha">
+            <label for="oficio-recebido">Ofício n.º <span class="opcional">(opcional)</span></label>
+            <input id="oficio-recebido" autocomplete="off" placeholder="213/2026">
+          </div>
+          <div class="linha">
+            <label for="processo">Processo n.º <span class="opcional">(opcional)</span></label>
+            <input id="processo" autocomplete="off" placeholder="5000000-00.2026.8.09.0107">
+          </div>
+        </div>
+
+        <div class="grupo" id="grupo-campos">
+          <h3 id="titulo-campos">Dados do modelo</h3>
+          <div id="campos"></div>
+        </div>
+
+        <div class="grupo">
+          <h3>Assinatura</h3>
+          <div class="linha">
+            <label for="assinante">Quem assina</label>
+            <select id="assinante"></select>
+          </div>
+          <div class="linha" id="linha-assina-nome" hidden>
+            <label for="assina-nome">Nome</label>
+            <input id="assina-nome" autocomplete="off">
+          </div>
+          <div class="linha" id="linha-assina-cargo" hidden>
+            <label for="assina-cargo">Cargo</label>
+            <input id="assina-cargo" autocomplete="off" placeholder="Escrevente">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cartao coluna">
+      <div class="cabeca">
+        <h2>Como vai sair</h2>
+        <span id="previa-aviso" class="previa-aviso"></span>
+      </div>
+      <div id="previa" class="previa"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="rodape">
+  <div id="aviso" class="aviso"></div>
+  <div class="acoes-rodape">
+    <button id="limpar" class="secundario" type="button">Novo ofício</button>
+    <button id="gerar" class="primario" type="button">Gerar ofício</button>
+  </div>
+</footer>
+
+<div id="modal" class="modal" hidden>
+  <div class="caixa">
+    <h3 id="modal-titulo"></h3>
+    <div id="modal-corpo"></div>
+    <div class="acoes">
+      <button id="modal-extra" class="secundario" hidden></button>
+      <button id="modal-pasta" class="secundario" hidden>Abrir pasta</button>
+      <button id="modal-fechar" class="primario">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

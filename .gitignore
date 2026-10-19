@@ -1,0 +1,11 @@
+# Ambiente Python, refeito com `py -3.14 -m venv .venv`
+.venv/
+__pycache__/
+*.pyc
+
+# Ofícios gerados pela ferramenta: documentos de trabalho, com dados de partes
+# e processos reais. Nunca versionar - o repositório é público.
+saida/
+
+# Configuração local do Claude Code
+.claude/settings.local.json

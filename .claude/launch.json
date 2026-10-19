@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "oficios",
+      "runtimeExecutable": ".venv\\Scripts\\python.exe",
+      "runtimeArgs": ["-m", "oficios.servidor"],
+      "env": {"PORTA_OFICIO": "8765", "SEM_NAVEGADOR": "1"},
+      "port": 8765
+    }
+  ]
+}

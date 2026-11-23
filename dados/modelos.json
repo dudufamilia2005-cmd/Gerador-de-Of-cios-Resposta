@@ -146,11 +146,46 @@
   "pedido_juizo":      {"rotulo": "O que o juízo pede", "tipo": "longo",
                         "exemplo": "o cancelamento da averbação premonitória relacionada ao presente processo, averbada sob o ato AV.08"},
   "ato_pedido":        {"rotulo": "Ato determinado", "exemplo": "averbação do cancelamento da indisponibilidade"},
-  "motivo_sem_contato": {"rotulo": "Por que não houve contato",
+  "motivo_emolumentos": {"rotulo": "Por que não foi pago",
+                        "ajuda": "Cada opção é a redação de ofícios reais de 2025-2026 para essa situação.",
                         "opcoes": {
-                         "Sem gratuidade e sem contato com as partes": {"texto": "Todavia, verificou-se que as partes interessadas não possuem gratuidade de justiça e não foi possível estabelecer contato para o recolhimento dos valores correspondentes. Em razão disso, restou inviabilizado o prosseguimento das comunicações necessárias."},
-                         "Parte sem dados no cadastro": {"texto": "Todavia, não foi possível realizar contato com a parte interessada, uma vez que não localizamos seus dados em nossos cadastros, motivo pelo qual não pudemos prosseguir com as comunicações necessárias para viabilizar o recolhimento dos valores correspondentes."},
-                         "Processo em segredo de justiça": {"texto": "Todavia, verificou-se que não foi possível estabelecer contato com as partes para viabilizar o recolhimento dos valores correspondentes, tendo em vista que os autos tramitam sob segredo de justiça, circunstância que impossibilitou o acesso integral ao processo e, consequentemente, a consulta aos respectivos meios de contato das partes. Em razão da impossibilidade de contato, restou inviabilizado o prosseguimento das comunicações necessárias."}}},
+                         "Sem gratuidade e sem contato com as partes": {
+                          "complemento": "",
+                          "texto": "Todavia, verificou-se que as partes interessadas não possuem gratuidade de justiça e não foi possível estabelecer contato para o recolhimento dos valores correspondentes. Em razão disso, restou inviabilizado o prosseguimento das comunicações necessárias.",
+                          "pedido": "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de contato com a parte responsável pelo recolhimento das custas e emolumentos."},
+                         "Parte não localizada no cadastro": {
+                          "complemento": "",
+                          "texto": "Todavia, não foi possível realizar contato com a parte interessada, uma vez que não localizamos seus dados em nossos cadastros, motivo pelo qual não pudemos prosseguir com as comunicações necessárias para viabilizar o recolhimento dos valores correspondentes.",
+                          "pedido": "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de contato com a parte responsável pelo recolhimento das custas e emolumentos."},
+                         "Processo em segredo de justiça": {
+                          "complemento": "",
+                          "texto": "Todavia, verificou-se que não foi possível estabelecer contato com as partes para viabilizar o recolhimento dos valores correspondentes, tendo em vista que os autos tramitam sob segredo de justiça, circunstância que impossibilitou o acesso integral ao processo e, consequentemente, a consulta aos respectivos meios de contato das partes. Em razão da impossibilidade de contato, restou inviabilizado o prosseguimento das comunicações necessárias.",
+                          "pedido": "Assim, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de contato com a parte responsável pelo recolhimento das custas e emolumentos."},
+                         "Advogado contatado, sem retorno": {
+                          "complemento": "Consultados os autos, não há notícia de concessão de gratuidade da justiça em favor da parte responsável pelo recolhimento, de modo que os emolumentos permanecem devidos, não havendo isenção aplicável ao caso.",
+                          "texto": "Todavia, entramos em contato com o advogado do processo {contato}[, através do telefone de contato {telefone}], desde o dia {data_contato}, solicitando a cobrança dos emolumentos junto à parte responsável, a fim de viabilizar o pagamento e o consequente ingresso do título para cumprimento das custas e emolumentos devidos. Na ocasião, o advogado informou que iria verificar a questão e retornaria, porém, até o presente momento, não obtivemos qualquer retorno.",
+                          "pedido": "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de retorno com a parte responsável e, consequentemente, a impossibilidade de confirmação quanto ao recolhimento das custas e emolumentos devidos."},
+                         "Advogada contatada, sem retorno": {
+                          "complemento": "Consultados os autos, não há notícia de concessão de gratuidade da justiça em favor da parte responsável pelo recolhimento, de modo que os emolumentos permanecem devidos, não havendo isenção aplicável ao caso.",
+                          "texto": "Todavia, entramos em contato com a advogada do processo {contato}[, através do telefone de contato {telefone}], desde o dia {data_contato}, solicitando a cobrança dos emolumentos junto à parte responsável, a fim de viabilizar o pagamento e o consequente ingresso do título para cumprimento das custas e emolumentos devidos. Na ocasião, a advogada informou que iria verificar a questão e retornaria, porém, até o presente momento, não obtivemos qualquer retorno.",
+                          "pedido": "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de retorno com a parte responsável e, consequentemente, a impossibilidade de confirmação quanto ao recolhimento das custas e emolumentos devidos."},
+                         "Parte contatada, sem retorno": {
+                          "complemento": "Consultados os autos, não há notícia de concessão de gratuidade da justiça em favor da parte responsável pelo recolhimento, de modo que os emolumentos permanecem devidos, não havendo isenção aplicável ao caso.",
+                          "texto": "Todavia, entramos em contato com {contato}[, através do telefone de contato {telefone}], desde o dia {data_contato}, solicitando a cobrança dos emolumentos junto à parte responsável, a fim de viabilizar o pagamento e o consequente ingresso do título para cumprimento das custas e emolumentos devidos. Contudo, até o presente momento, não obtivemos qualquer retorno.",
+                          "pedido": "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de retorno com a parte responsável e, consequentemente, a impossibilidade de confirmação quanto ao recolhimento das custas e emolumentos devidos."},
+                         "Parte alega gratuidade (autos em segredo de justiça)": {
+                          "complemento": "",
+                          "texto": "Esclarecemos, contudo, que foi realizado contato com a parte interessada, a qual informou que ambas as partes do processo são beneficiárias da assistência judiciária gratuita. Ocorre que, em razão de o feito tramitar sob segredo de justiça, não é possível a este Ofício acessar os autos para averiguar a efetiva concessão do benefício e sua extensão em relação aos emolumentos devidos para a prática do ato registral.",
+                          "pedido": "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deverá proceder este Ofício quanto à execução do ato determinado, especialmente no que se refere à cobrança ou eventual dispensa do recolhimento das custas e emolumentos, considerando a alegação de concessão da assistência judiciária gratuita e a impossibilidade de acesso aos autos."},
+                         "Partes recusaram o pagamento": {
+                          "complemento": "",
+                          "texto": "Cumpre ainda informar que, embora esta Serventia esteja apta a cumprir a determinação, a efetivação do ato depende do prévio recolhimento das custas e emolumentos devidos, entretanto, as partes interessadas foram contatadas, mas recusaram-se a efetuar o pagamento das custas, impossibilitando o prosseguimento da prática do ato até ulterior definição.",
+                          "pedido": "Por essas razões, requer-se a {pronome} que se digne a esclarecer se há dispensa expressa do pagamento das custas e emolumentos, a fim de que este Registro possa praticar o ato independentemente de recolhimento."}}},
+  "contato":           {"rotulo": "Quem foi contatado", "exemplo": "Dr. Fulano de Tal",
+                        "ajuda": "Na opção \"Parte contatada\", escreva com o artigo: \"o requerido Fulano de Tal\"."},
+  "lembrar_gratuidade": {"rotulo": "Lembrar da gratuidade",
+                        "opcoes": {"Sim — se houver gratuidade, o ato sai sem recolhimento": {"texto": "Ressaltamos que, caso haja concessão de gratuidade de justiça nos autos, o benefício abrange os emolumentos decorrentes da prática do ato, hipótese em que o ato poderá ser realizado independentemente de recolhimento pela parte interessada."}},
+                        "ajuda": "Em branco, o parágrafo não entra."},
   "advogado":          {"rotulo": "Advogado(a) contatado(a)", "exemplo": "Dr. Fulano de Tal"},
   "telefone":          {"rotulo": "Telefone do contato", "exemplo": "(64) 90000-0000"},
   "data_contato":      {"rotulo": "Data do contato", "tipo": "data", "formato": "curta"},
@@ -159,7 +194,8 @@
   "objeto":            {"rotulo": "Do que trata o ofício", "exemplo": "cancelamento do ajuizamento da ação e à partilha"},
   "resumo_exigencias": {"rotulo": "Resumo das exigências", "tipo": "longo",
                         "exemplo": "é necessária a apresentação da guia de ITCD quitada…"},
-  "objeto_esclarecimento": {"rotulo": "Assunto da decisão", "exemplo": "averbação de retificação de escritura de doação"},
+  "objeto_esclarecimento": {"rotulo": "Do que trata a ordem", "exemplo": "da averbação de retificação de escritura de doação",
+                        "ajuda": "Comece com “da” ou “do”: “da averbação da penhora”, “do registro do formal de partilha”."},
   "exposicao":         {"rotulo": "Exposição da divergência", "tipo": "longo",
                         "exemplo": "Verifica-se que a decisão menciona a matrícula n.º … enquanto o ofício indica …"},
   "ponto_esclarecer":  {"rotulo": "O que precisa ser esclarecido", "exemplo": "qual das matrículas deve receber o ato"},
@@ -427,29 +463,17 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-custas-sem-contato", "setor": "RGI", "finalidade": "nao-cumprido",
-   "rotulo": "Emolumentos não pagos — sem contato com a parte",
-   "descricao": "Nada impede o ato, mas ninguém pagou e não houve como contatar a parte. Pede orientação.",
+  {"id": "rgi-como-pagar-emolumentos", "setor": "RGI", "finalidade": ["pedir-esclarecimento", "nao-cumprido"],
+   "rotulo": "Como serão pagos os emolumentos?",
+   "descricao": "Nada impede o ato, mas os emolumentos não foram pagos: pede ao juízo orientação. Escolha o motivo — cada um traz a redação usada nos ofícios.",
    "assunto": "",
-   "arquivo": "emolumentos pendentes - matr. {matricula}",
+   "arquivo": "esclarecimento sobre emolumentos - matr. {matricula}",
    "corpo": [
     "Acusamos o recebimento do Ofício em epígrafe, no qual {pronome} solicita {pedido_juizo}, referente à matrícula n.º {matricula}.",
-    "Informamos que este Ofício de Registro de Imóveis não possui qualquer impedimento para a prática do ato solicitado, estando apto a cumpri-lo tão logo seja efetuado o pagamento das custas e emolumentos devidos, conforme exame cálculo em anexo, no qual consta o valor a ser recolhido.",
-    "{motivo_sem_contato.texto}",
-    "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de contato com a parte responsável pelo recolhimento das custas e emolumentos."
-   ],
-   "fecho": "f1"},
-
-  {"id": "rgi-custas-advogado-sem-retorno", "setor": "RGI", "finalidade": "nao-cumprido",
-   "rotulo": "Emolumentos não pagos — advogado não retornou",
-   "descricao": "Contato feito com o advogado para cobrar os emolumentos, sem retorno. Pede orientação.",
-   "assunto": "",
-   "arquivo": "emolumentos pendentes - matr. {matricula}",
-   "corpo": [
-    "Acusamos o recebimento do Ofício em epígrafe, no qual {pronome} solicita {pedido_juizo}, referente à matrícula n.º {matricula}.",
-    "Informamos que este Ofício de Registro de Imóveis não possui qualquer impedimento para a prática do ato solicitado, estando apto a cumpri-lo tão logo seja efetuado o pagamento das custas e emolumentos devidos, conforme exame cálculo em anexo, no qual consta o valor a ser recolhido. Consultados os autos, não há notícia de concessão de gratuidade da justiça em favor da parte responsável pelo recolhimento, de modo que os emolumentos permanecem devidos, não havendo isenção aplicável ao caso.",
-    "Todavia, entramos em contato com o advogado do processo {advogado}, através do telefone de contato {telefone}, desde o dia {data_contato}, solicitando a cobrança dos emolumentos junto à parte responsável, a fim de viabilizar o pagamento e o consequente ingresso do título para cumprimento das custas e emolumentos devidos. Na ocasião, o advogado informou que iria verificar a questão e retornaria, porém, até o presente momento, não obtivemos qualquer retorno.",
-    "Diante disso, solicitamos a gentileza de {pronome} em esclarecer como deveremos proceder quanto à execução do ato determinado, considerando a ausência de retorno com a parte responsável e, consequentemente, a impossibilidade de confirmação quanto ao recolhimento das custas e emolumentos devidos."
+    "Informamos que este Ofício de Registro de Imóveis não possui qualquer impedimento para a prática do ato solicitado, estando apto a cumpri-lo tão logo seja efetuado o pagamento das custas e emolumentos devidos, conforme exame cálculo em anexo, no qual consta o valor a ser recolhido.[ {motivo_emolumentos.complemento}]",
+    "{motivo_emolumentos.texto}",
+    "[{lembrar_gratuidade.texto}]",
+    "{motivo_emolumentos.pedido}"
    ],
    "fecho": "f1"},
 
@@ -508,7 +532,7 @@
    "assunto": "",
    "arquivo": "solicitacao de esclarecimentos - matr. {matricula}",
    "corpo": [
-    "Cumprimentando-o(a) respeitosamente, vimos, por meio do presente, solicitar esclarecimentos quanto ao teor da decisão e do ofício encaminhados a esta serventia, que tratam da {objeto_esclarecimento}[, referente à matrícula n.º {matricula}].",
+    "Cumprimentando-o(a) respeitosamente, vimos, por meio do presente, solicitar esclarecimentos quanto ao teor da decisão e do ofício encaminhados a esta serventia, que tratam {objeto_esclarecimento}[, referente à matrícula n.º {matricula}].",
     "{exposicao}",
     "Assim, a fim de evitar equívocos no cumprimento da ordem judicial e garantir a exatidão dos atos registrais, solicitamos a gentileza de esclarecer {ponto_esclarecer}."
    ],

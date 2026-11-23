@@ -57,6 +57,7 @@ def catalogo_para_tela(r):
                      "destinatario": m.get("destinatario", ""),
                      "referencia": m.get("referencia", True),
                      "campos": r.campos_do_modelo(m),
+                     "condicionais": r.campos_condicionais(m),
                      "obrigatorios": r.campos_obrigatorios(m)}
                     for m in cat.modelos.values()],
     }

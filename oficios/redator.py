@@ -93,20 +93,64 @@ class Redator:
 
     @staticmethod
     def _textos(m):
-        textos = [m.get("assunto", ""), m.get("arquivo", "")]
-        textos += [p for p in m["corpo"] if isinstance(p, str)]
-        return textos
+        # o nome do arquivo vem por ultimo: a ordem dos campos na tela segue
+        # a ordem em que aparecem no oficio
+        return ([m.get("assunto", "")] + [p for p in m["corpo"] if isinstance(p, str)]
+                + [m.get("arquivo", "")])
 
     def campos_do_modelo(self, m):
-        """Campos que a tela pede para este modelo, na ordem em que aparecem."""
+        """Campos que a tela pede para este modelo, na ordem em que aparecem.
+
+        Inclui os que so existem dentro do texto de uma opcao de escolha (o
+        advogado contatado, quando o motivo e "advogado sem retorno"): vem logo
+        depois do campo de escolha, e a tela so os mostra quando a opcao que
+        os usa estiver marcada (ver campos_condicionais).
+        """
         vistos = []
         for t in self._textos(m):
             for nome, _ in CAMPO.findall(t):
-                if nome not in DO_CONTEXTO + DO_PEDIDO and nome not in vistos:
-                    vistos.append(nome)
+                if nome in DO_CONTEXTO + DO_PEDIDO or nome in vistos:
+                    continue
+                vistos.append(nome)
+                for dep in self._dependentes(nome):
+                    if dep not in vistos:
+                        vistos.append(dep)
         if m.get("fecho") == "escolha":
             vistos.append("fecho")
         return vistos
+
+    def _dependentes(self, escolha):
+        """Campos citados dentro dos textos das opcoes de um campo de escolha."""
+        opcoes = self.cat.campos.get(escolha, {}).get("opcoes")
+        if not isinstance(opcoes, dict):
+            return []
+        achados = []
+        for textos in opcoes.values():
+            for t in textos.values():
+                for nome, _ in CAMPO.findall(t):
+                    if nome not in DO_CONTEXTO + DO_PEDIDO and nome not in achados:
+                        achados.append(nome)
+        return achados
+
+    def campos_condicionais(self, m):
+        """{campo: {"escolha": nome, "opcoes": [...]}} - so aparece com essas opcoes."""
+        saida = {}
+        for escolha in self.campos_do_modelo(m):
+            opcoes = self.cat.campos.get(escolha, {}).get("opcoes")
+            if not isinstance(opcoes, dict):
+                continue
+            for rotulo, textos in opcoes.items():
+                for t in textos.values():
+                    fora = {n for n, _ in CAMPO.findall(SEGMENTO.sub("", t))}
+                    for nome, _ in CAMPO.findall(t):
+                        if nome in DO_CONTEXTO + DO_PEDIDO:
+                            continue
+                        dep = saida.setdefault(nome, {"escolha": escolha, "opcoes": [],
+                                                      "obrigatorio": False})
+                        if rotulo not in dep["opcoes"]:
+                            dep["opcoes"].append(rotulo)
+                        dep["obrigatorio"] |= nome in fora
+        return saida
 
     def campos_obrigatorios(self, m):
         """Os campos fora de colchetes - faltando, o oficio nao fecha."""
@@ -144,7 +188,9 @@ class Redator:
                 if rascunho:
                     return f"«{self._rotulo(nome)}»"
                 raise CampoFaltando(f"escolha uma opção em: {self._rotulo(nome)}")
-            return opcoes[bruto][chave]
+            texto = opcoes[bruto][chave]
+            # o texto da opcao pode ter campos e trechos opcionais proprios
+            return self.preenche(texto, valores, contexto, rascunho) if "{" in texto else texto
         if info.get("tipo") == "data" and re.fullmatch(r"\d{4}-\d{2}-\d{2}", bruto):
             return data_curta(bruto) if info.get("formato") == "curta" else data_por_extenso(bruto)
         return bruto

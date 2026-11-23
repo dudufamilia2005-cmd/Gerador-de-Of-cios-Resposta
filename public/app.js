@@ -87,7 +87,7 @@ async function iniciar() {
 // o setor. A contagem de cada botão já considera o outro filtro, e botão que
 // não levaria a nenhum modelo fica apagado.
 const passaSetor = (m, s) => !s || m.setor === s || m.setor === '*';
-const passaFinalidade = (m, f) => !f || m.finalidade === f;
+const passaFinalidade = (m, f) => !f || m.finalidade.includes(f);   // pode ter mais de uma
 
 function desenhaFiltros() {
   const abasF = $('finalidades');
@@ -134,54 +134,58 @@ function desenhaLista() {
   const termo = semAcento($('filtro').value.trim());
   const lista = $('lista');
   lista.textContent = '';
-  const ordemF = Object.keys(CAT.finalidades);
   const ordemS = Object.keys(CAT.setores);
   const visiveis = CAT.modelos
     .filter(m => passaSetor(m, setorFiltro) && passaFinalidade(m, finalidadeFiltro) &&
-      (!termo || semAcento(`${m.rotulo} ${m.descricao} ${m.setor} ${CAT.finalidades[m.finalidade].rotulo}`)
-                   .includes(termo)))
-    .sort((a, b) => ordemF.indexOf(a.finalidade) - ordemF.indexOf(b.finalidade)
-                    || ordemS.indexOf(a.setor) - ordemS.indexOf(b.setor));
+      (!termo || semAcento(`${m.rotulo} ${m.descricao} ${m.setor} `
+                           + m.finalidade.map(f => CAT.finalidades[f].rotulo).join(' ')).includes(termo)))
+    .sort((a, b) => ordemS.indexOf(a.setor) - ordemS.indexOf(b.setor));
 
   if (!visiveis.length) {
     lista.innerHTML = '<div class="vazio">Nenhum modelo com esses filtros.</div>';
     return;
   }
   // Com uma finalidade escolhida o título dela já está no filtro: a lista vai
-  // corrida. Sem filtro, separa por finalidade.
-  let grupo = null;
-  for (const m of visiveis) {
-    if (!finalidadeFiltro && m.finalidade !== grupo) {
-      grupo = m.finalidade;
+  // corrida. Sem filtro, separa por finalidade - e o modelo que serve a duas
+  // aparece nas duas.
+  const blocos = finalidadeFiltro ? [[null, visiveis]]
+    : Object.keys(CAT.finalidades).map(f => [f, visiveis.filter(m => m.finalidade.includes(f))])
+                                  .filter(([, ms]) => ms.length);
+  for (const [grupo, modelos] of blocos) {
+    if (grupo) {
       const h = document.createElement('div');
       h.className = 'grupo-lista';
       h.textContent = CAT.finalidades[grupo].rotulo;
       lista.append(h);
     }
-    const marcado = modeloAtual && modeloAtual.id === m.id;
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'item' + (marcado ? ' marcado' : '');
-    b.title = m.descricao || '';
-    if (m.setor !== '*') {
-      const et = document.createElement('span');
-      et.className = 'etiqueta'; et.textContent = m.setor;
-      b.append(et);
-    }
-    const texto = document.createElement('div');
-    const nome = document.createElement('div');
-    nome.className = 'nome'; nome.textContent = m.rotulo;
-    texto.append(nome);
-    // descrição só no escolhido: a lista inteira com explicação virava parede
-    if (marcado && m.descricao) {
-      const meta = document.createElement('div');
-      meta.className = 'meta'; meta.textContent = m.descricao;
-      texto.append(meta);
-    }
-    b.append(texto);
-    b.addEventListener('click', () => escolheModelo(m));
-    lista.append(b);
+    for (const m of modelos) desenhaItem(lista, m);
   }
+}
+
+function desenhaItem(lista, m) {
+  const marcado = modeloAtual && modeloAtual.id === m.id;
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'item' + (marcado ? ' marcado' : '');
+  b.title = m.descricao || '';
+  if (m.setor !== '*') {
+    const et = document.createElement('span');
+    et.className = 'etiqueta'; et.textContent = m.setor;
+    b.append(et);
+  }
+  const texto = document.createElement('div');
+  const nome = document.createElement('div');
+  nome.className = 'nome'; nome.textContent = m.rotulo;
+  texto.append(nome);
+  // descrição só no escolhido: a lista inteira com explicação virava parede
+  if (marcado && m.descricao) {
+    const meta = document.createElement('div');
+    meta.className = 'meta'; meta.textContent = m.descricao;
+    texto.append(meta);
+  }
+  b.append(texto);
+  b.addEventListener('click', () => escolheModelo(m));
+  lista.append(b);
 }
 
 function escolheModelo(m) {
@@ -332,14 +336,21 @@ function desenhaCampos() {
     alvo.insertAdjacentHTML('beforeend', '<div class="nada">Este modelo não pede nenhum dado.</div>');
     return;
   }
+  // Campo que só existe no texto de algumas opções (quem foi contatado, quando
+  // o motivo é "advogado sem retorno") aparece só com essas opções marcadas.
+  const condicionais = modeloAtual.condicionais || {};
+  const temDependentes = new Set(Object.values(condicionais).map(x => x.escolha));
   for (const c of modeloAtual.campos) {
     const info = CAT.campos[c] || {};
+    const cond = condicionais[c];
+    if (cond && !cond.opcoes.includes(valores.get(cond.escolha) || '')) continue;
     const linha = document.createElement('div');
     linha.className = 'linha' + (info.tipo === 'longo' ? ' topo-label' : '');
     const lab = document.createElement('label');
     lab.textContent = info.rotulo || c;
     lab.htmlFor = 'campo-' + c;
-    const opcional = info.padrao || !modeloAtual.obrigatorios.includes(c);
+    const opcional = cond ? !cond.obrigatorio
+                          : info.padrao || !modeloAtual.obrigatorios.includes(c);
     if (opcional) {
       const op = document.createElement('span');
       op.className = 'opcional'; op.textContent = ' (opcional)';
@@ -372,6 +383,7 @@ function desenhaCampos() {
     else if (opcional) inp.title = 'Em branco, o trecho não entra no ofício.';
     inp.addEventListener(info.opcoes ? 'change' : 'input', () => {
       valores.set(c, inp.value);
+      if (temDependentes.has(c)) desenhaCampos();     // mostra/esconde os campos da opção
       pedePrevia();
     });
     linha.append(lab, inp);

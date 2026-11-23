@@ -75,6 +75,15 @@ mover `destinatarios.json`/`assinantes.json` para fora do git.
    `dados/modelos.json`). É o filtro principal da tela — pedido da serventia
    (23/11/2026): a lista com tudo junto ficava poluída. Os nomes das
    finalidades ainda podem mudar; o validador reprova modelo sem finalidade.
+   Pode ser lista: "Como serão pagos os emolumentos?" está em "Pedir
+   esclarecimento" e em "Não deu para cumprir", e aparece nos dois filtros.
+8. **Texto de opção pode ter campos próprios.** As opções de
+   `motivo_emolumentos` trazem `{contato}`, `{telefone}`, `{data_contato}` e
+   trechos entre colchetes; o redator preenche o texto da opção de novo.
+   A tela só mostra esses campos quando a opção que os usa está marcada
+   (`campos_condicionais`), e o validador redige o modelo com **cada** opção.
+   As oito opções vêm de 27 ofícios de 2025–2026 (levantamento de
+   23/11/2026); duas foram adaptadas de "ato de cancelamento" para "ato".
 
 ## Pendências conhecidas
 

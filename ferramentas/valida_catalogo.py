@@ -52,8 +52,11 @@ def main():
         mid = m["id"]
         if m["setor"] != "*" and m["setor"] not in cat.setores:
             erros.append(f"{mid}: setor '{m['setor']}' não existe")
-        if m.get("finalidade") not in cat.finalidades:
-            erros.append(f"{mid}: finalidade '{m.get('finalidade')}' não existe")
+        if not m["finalidade"]:
+            erros.append(f"{mid}: sem finalidade")
+        for f in m["finalidade"]:
+            if f not in cat.finalidades:
+                erros.append(f"{mid}: finalidade '{f}' não existe")
         fecho = m.get("fecho", "f1")
         if fecho not in (None, "escolha") and fecho not in cat.fechos:
             erros.append(f"{mid}: fecho '{fecho}' não existe")
@@ -86,18 +89,27 @@ def main():
                         ano="2026", numero="7", data="2026-10-19", destinatario=destinatario,
                         oficio_recebido="100/2026", processo="5000000-00.2026.8.09.0107",
                         valores=valores, assinante=cat.assinantes["matheus-antonio"])
-        try:
-            blocos = r.redige(pedido)
-            texto = Redator.em_texto(blocos)
-            sobra = re.findall(r"\{\w+(?:\.\w+)?\}|[\[\]«»]", texto)
-            if sobra:
-                erros.append(f"{mid}: sobrou no texto final: {sorted(set(sobra))}")
-            conteudo = documento.monta(blocos, MOLDE)
-            with zipfile.ZipFile(BytesIO(conteudo)) as z:
-                ET.fromstring(z.read("word/document.xml"))
-            r.nome_arquivo(pedido)
-        except Exception as e:                                # noqa: BLE001
-            erros.append(f"{mid}: não redige — {type(e).__name__}: {e}")
+        # a primeira opcao de cada escolha, e depois cada opcao de cada escolha:
+        # texto de opcao tem campos e trechos proprios, e precisa fechar tambem
+        variantes = [("", valores)]
+        for c in r.campos_do_modelo(m):
+            op = cat.campos.get(c, {}).get("opcoes")
+            if isinstance(op, dict):
+                variantes += [(f" [{c} = {o}]", dict(valores, **{c: o})) for o in list(op)[1:]]
+        for rotulo, vals in variantes:
+            pedido.valores = vals
+            try:
+                blocos = r.redige(pedido)
+                texto = Redator.em_texto(blocos)
+                sobra = re.findall(r"\{\w+(?:\.\w+)?\}|[\[\]«»]", texto)
+                if sobra:
+                    erros.append(f"{mid}{rotulo}: sobrou no texto final: {sorted(set(sobra))}")
+                conteudo = documento.monta(blocos, MOLDE)
+                with zipfile.ZipFile(BytesIO(conteudo)) as z:
+                    ET.fromstring(z.read("word/document.xml"))
+                r.nome_arquivo(pedido)
+            except Exception as e:                            # noqa: BLE001
+                erros.append(f"{mid}{rotulo}: não redige — {type(e).__name__}: {e}")
 
     if erros:
         print(f"REPROVADO — {len(erros)} problema(s):")

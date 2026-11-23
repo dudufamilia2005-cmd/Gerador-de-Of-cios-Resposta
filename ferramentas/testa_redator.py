@@ -110,11 +110,33 @@ t7 = texto(pedido("rgi-indisponibilidade-fora-cnib", {"matricula": "35.663"}))
 confere("citação", "Art. 320-E. Todas as ordens de indisponibilidade" in t7, "citação CNIB")
 
 # --- escolha com paragrafo inteiro
-t8 = texto(pedido("rgi-custas-sem-contato",
-                  {"pedido_juizo": "o cancelamento da penhora", "matricula": "1.000",
-                   "motivo_sem_contato": "Processo em segredo de justiça"}))
+EMOL = {"pedido_juizo": "o cancelamento da penhora", "matricula": "1.000"}
+t8 = texto(pedido("rgi-como-pagar-emolumentos",
+                  dict(EMOL, motivo_emolumentos="Processo em segredo de justiça")))
 confere("motivo", "tramitam sob segredo de justiça" in t8, t8)
+confere("pedido do motivo", "    Assim, solicitamos a gentileza de Vossa Excelência" in t8, t8)
 confere("pronome no corpo", "no qual Vossa Excelência solicita" in t8, "pronome no corpo")
+confere("sem complemento", "Consultados os autos" not in t8, "complemento de outro motivo")
+confere("sem lembrete", "Ressaltamos que, caso haja" not in t8, "parágrafo opcional ficou")
+
+# --- opcao com campos proprios: advogada, telefone opcional, data curta
+t8b = texto(pedido("rgi-como-pagar-emolumentos",
+                   dict(EMOL, motivo_emolumentos="Advogada contatada, sem retorno",
+                        contato="Dra. Fulana de Tal", data_contato="2026-08-06",
+                        lembrar_gratuidade=next(iter(CAT.campos["lembrar_gratuidade"]["opcoes"])))))
+confere("advogada", "com a advogada do processo Dra. Fulana de Tal, desde o dia 06/08/2026" in t8b, t8b)
+confere("complemento", "recolhido. Consultados os autos, não há notícia" in t8b, t8b)
+confere("lembrete", "Ressaltamos que, caso haja concessão de gratuidade" in t8b, t8b)
+confere("pedido retorno", "considerando a ausência de retorno com a parte" in t8b, t8b)
+try:
+    R.redige(pedido("rgi-como-pagar-emolumentos",
+                    dict(EMOL, motivo_emolumentos="Advogado contatado, sem retorno")))
+    falhas.append("motivo com advogado: deveria recusar sem o nome do advogado")
+except CampoFaltando:
+    pass
+cond = R.campos_condicionais(CAT.modelo("rgi-como-pagar-emolumentos"))
+confere("condicional", "contato" in cond and "Parte não localizada no cadastro" not in cond["contato"]["opcoes"],
+        cond)
 
 # --- resposta livre: varias linhas viram paragrafos; fecho escolhido
 fecho = next(k for k, v in CAT.campos["fecho"]["opcoes"].items() if v["id"] == "ensejo")

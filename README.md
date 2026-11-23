@@ -36,15 +36,15 @@ setor, como hoje.
 
 ## Os modelos
 
-São 48 modelos, transcritos dos ofícios expedidos em 2025–2026. Na tela eles se
-filtram primeiro pelo **que o ofício faz** e depois pelo setor:
+São 47 modelos, transcritos dos ofícios expedidos em 2025–2026. Na tela eles se
+filtram primeiro pelo **que o ofício faz** e depois pelo setor. Um modelo pode\nservir a mais de uma finalidade e aparece nas duas:
 
 | Finalidade | Exemplos |
 |---|---|
 | Serviço feito | penhora registrada, cancelamentos, ajuizamento averbado |
 | Não deu para cumprir | emolumentos pendentes, exigência, ordem fora da CNIB |
 | Já estava feito | indisponibilidade já cancelada, ato que não existe na matrícula |
-| Pedir esclarecimento | ordem ambígua, mandado de penhora sem ordem expressa |
+| Pedir esclarecimento | como serão pagos os emolumentos, ordem ambígua, mandado de penhora sem ordem expressa |
 | Prestar informação | retificação de área, andamento ao MP |
 | Enviar o que foi pedido | certidão de inteiro teor, certidão de escritura |
 | Responder busca | busca negativa (PF/PJ), positiva, CAR |
@@ -54,10 +54,10 @@ filtram primeiro pelo **que o ofício faz** e depois pelo setor:
 
 Por setor:
 
-- **RGI** (23): ajuizamento averbado; penhora registrada; cancelamentos (penhora,
+- **RGI** (22): ajuizamento averbado; penhora registrada; cancelamentos (penhora,
   hipoteca, arresto, indisponibilidade, ajuizamento, premonitória, consolidação);
   reversão de doação; indisponibilidade fora da CNIB (com os arts. 320-D e
-  320-E do CNN); emolumentos pendentes; exigência/nota devolutiva; pedido de
+  320-E do CNN); como serão pagos os emolumentos (oito motivos, cada um com a redação dos ofícios de 2025–2026); emolumentos aguardando pagamento; exigência/nota devolutiva; pedido de
   esclarecimento; retificação de área; Pró-Morar etc.
 - **STC** (10): certidão de inteiro teor; certidão de escritura; busca negativa
   (PF/PJ) e positiva; CAR para a Promotoria; comunicação mensal ao INCRA.

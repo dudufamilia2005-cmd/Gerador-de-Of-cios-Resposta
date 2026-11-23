@@ -34,6 +34,10 @@ class Catalogo:
         for t in m["modelos"]:
             if t["id"] in self.modelos:
                 raise ValueError(f"modelo repetido em modelos.json: {t['id']}")
+            # um modelo pode servir a mais de uma finalidade (aparece nos dois
+            # filtros); internamente e sempre lista
+            f = t.get("finalidade", [])
+            t["finalidade"] = [f] if isinstance(f, str) else list(f)
             self.modelos[t["id"]] = t
 
         d = _le("destinatarios.json")

@@ -16,7 +16,9 @@
   "norma cadastrada em 'citacoes'. 'fecho' aponta para 'fechos'; \"escolha\" deixa o",
   "escrevente escolher; null tira o fecho. 'referencia': false esconde o bloco",
   "'Ofício recebido' (ofício que não responde a outro). 'setor': \"*\" serve a",
-  "qualquer setor. 'destinatario' sugere um destinatário do cadastro."
+  "qualquer setor. 'destinatario' sugere um destinatário do cadastro.",
+  "'finalidade' aponta para 'finalidades': é o filtro principal da tela",
+  "(o que o ofício faz: serviço feito, responder busca, pedir esclarecimento…)."
  ],
 
  "setores": {
@@ -25,6 +27,19 @@
   "STN": "Tabelionato de Notas",
   "ADM": "Administrativo",
   "INT": "Intimações (alienação fiduciária)"
+ },
+
+ "finalidades": {
+  "servico-feito":        {"rotulo": "Serviço feito",           "descricao": "A ordem foi cumprida: ato registrado, averbado ou cancelado."},
+  "nao-cumprido":         {"rotulo": "Não deu para cumprir",    "descricao": "Falta algo: emolumentos, exigência, ordem pela CNIB."},
+  "ja-feito":             {"rotulo": "Já estava feito",         "descricao": "Nada a fazer: o ato já tinha sido praticado ou não existe."},
+  "pedir-esclarecimento": {"rotulo": "Pedir esclarecimento",    "descricao": "A ordem não deixa claro o que fazer ou em qual imóvel."},
+  "prestar-informacao":   {"rotulo": "Prestar informação",      "descricao": "O juízo ou o MP pediu informação sobre um caso."},
+  "envio-documento":      {"rotulo": "Enviar o que foi pedido", "descricao": "Segue a certidão ou o documento solicitado."},
+  "resposta-busca":       {"rotulo": "Responder busca",         "descricao": "Busca de bens ou de atos: negativa ou positiva."},
+  "comunicacao":          {"rotulo": "Comunicar",               "descricao": "Aviso por iniciativa do cartório: INCRA, outro tabelionato, Diretoria do Foro."},
+  "solicitacao":          {"rotulo": "Solicitar",               "descricao": "O cartório pede algo a órgão, banco ou outro cartório."},
+  "livre":                {"rotulo": "Texto livre",             "descricao": "Sem modelo: o corpo é digitado."}
  },
 
  "fechos": {
@@ -272,7 +287,7 @@
 
  "modelos": [
 
-  {"id": "rgi-ajuizamento-averbado", "setor": "RGI", "grupo": "Ordem cumprida",
+  {"id": "rgi-ajuizamento-averbado", "setor": "RGI", "finalidade": "servico-feito",
    "rotulo": "Ajuizamento de ação averbado",
    "descricao": "A averbação da ação (premonitória/ajuizamento) foi feita na matrícula.",
    "assunto": "Ajuizamento de Ação – Matr. {matricula}",
@@ -283,7 +298,7 @@
    ],
    "fecho": "f3"},
 
-  {"id": "rgi-penhora-registrada", "setor": "RGI", "grupo": "Ordem cumprida",
+  {"id": "rgi-penhora-registrada", "setor": "RGI", "finalidade": "servico-feito",
    "rotulo": "Penhora registrada",
    "descricao": "O registro da penhora foi feito. Fração e proprietário são opcionais.",
    "assunto": "Penhora – Matrícula {matricula}",
@@ -293,7 +308,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-cancelamento-constricao", "setor": "RGI", "grupo": "Ordem cumprida",
+  {"id": "rgi-cancelamento-constricao", "setor": "RGI", "finalidade": "servico-feito",
    "rotulo": "Cancelamento de penhora, hipoteca, arresto ou indisponibilidade",
    "descricao": "O ônus foi cancelado. Pode informar ônus que continuam na matrícula.",
    "assunto": "Cancelamento de {onus.titulo} – Matr. {matricula}",
@@ -305,7 +320,7 @@
    ],
    "fecho": "f5"},
 
-  {"id": "rgi-cancelamento-ajuizamento", "setor": "RGI", "grupo": "Ordem cumprida",
+  {"id": "rgi-cancelamento-ajuizamento", "setor": "RGI", "finalidade": "servico-feito",
    "rotulo": "Cancelamento de ajuizamento de ação",
    "descricao": "A averbação da ação foi cancelada.",
    "assunto": "Cancelamento de Ajuizamento de Ação – Matr. {matricula}",
@@ -315,7 +330,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-cancelamento-premonitoria", "setor": "RGI", "grupo": "Ordem cumprida",
+  {"id": "rgi-cancelamento-premonitoria", "setor": "RGI", "finalidade": "servico-feito",
    "rotulo": "Cancelamento de averbação premonitória",
    "descricao": "A averbação da existência da ação (art. 828 do CPC) foi cancelada.",
    "assunto": "Cancelamento de Averbação Premonitória – Matr. {matricula}",
@@ -325,7 +340,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-cancelamento-consolidacao", "setor": "RGI", "grupo": "Ordem cumprida",
+  {"id": "rgi-cancelamento-consolidacao", "setor": "RGI", "finalidade": "servico-feito",
    "rotulo": "Cancelamento de consolidação da propriedade",
    "descricao": "Cancelada a consolidação em favor do credor fiduciário; o imóvel volta ao proprietário.",
    "assunto": "Cancelamento de Consolidação de Propriedade – Matr. {matricula}",
@@ -336,7 +351,7 @@
    ],
    "fecho": "f4"},
 
-  {"id": "rgi-reversao-doacao", "setor": "RGI", "grupo": "Ordem cumprida",
+  {"id": "rgi-reversao-doacao", "setor": "RGI", "finalidade": "servico-feito",
    "rotulo": "Reversão de doação com encargo",
    "descricao": "Cancelado o registro da doação com encargo; o imóvel volta ao Município.",
    "assunto": "Reversão de Doação – Matr. {matricula}",
@@ -349,7 +364,7 @@
    ],
    "fecho": "f6"},
 
-  {"id": "rgi-indisponibilidade-ja-cancelada", "setor": "RGI", "grupo": "Nada a fazer",
+  {"id": "rgi-indisponibilidade-ja-cancelada", "setor": "RGI", "finalidade": "ja-feito",
    "rotulo": "Indisponibilidade já cancelada pela CNIB",
    "descricao": "O cancelamento pedido já foi feito antes, por ordem da CNIB.",
    "assunto": "Cancelamento de Indisponibilidade – Matr. {matricula}",
@@ -361,7 +376,7 @@
    ],
    "fecho": "f2"},
 
-  {"id": "rgi-ato-inexistente", "setor": "RGI", "grupo": "Nada a fazer",
+  {"id": "rgi-ato-inexistente", "setor": "RGI", "finalidade": "ja-feito",
    "rotulo": "Ato inexistente na matrícula",
    "descricao": "Pedem baixa de algo (penhora, ajuizamento…) que não consta da matrícula.",
    "assunto": "Baixa de {ato_inexistente} – Matr. {matricula}",
@@ -372,7 +387,7 @@
    ],
    "fecho": "f2"},
 
-  {"id": "rgi-ja-cumprido-matricula-encerrada", "setor": "RGI", "grupo": "Nada a fazer",
+  {"id": "rgi-ja-cumprido-matricula-encerrada", "setor": "RGI", "finalidade": "ja-feito",
    "rotulo": "Ordem já cumprida (matrícula encerrada e aberta outra)",
    "descricao": "O ato foi transportado para a matrícula nova e já tinha sido praticado.",
    "assunto": "Matr. {matricula}",
@@ -385,7 +400,7 @@
    ],
    "fecho": "f6-sem-pronome"},
 
-  {"id": "rgi-indisponibilidade-fora-cnib", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-indisponibilidade-fora-cnib", "setor": "RGI", "finalidade": "nao-cumprido",
    "rotulo": "Indisponibilidade recebida fora da CNIB",
    "descricao": "Ordem de indisponibilidade chegou por ofício: só pode vir pela CNIB (arts. 320-D e 320-E do CNN).",
    "assunto": "Indisponibilidade – Matr. {matricula}",
@@ -398,7 +413,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-cancelamento-indisponibilidade-fora-cnib", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-cancelamento-indisponibilidade-fora-cnib", "setor": "RGI", "finalidade": "nao-cumprido",
    "rotulo": "Cancelamento de indisponibilidade fora da CNIB",
    "descricao": "Pedem cancelar indisponibilidade por ofício: a ordem de cancelamento precisa vir pela CNIB.",
    "assunto": "Cancelamento de Indisponibilidade – Matr. {matricula}",
@@ -412,7 +427,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-custas-sem-contato", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-custas-sem-contato", "setor": "RGI", "finalidade": "nao-cumprido",
    "rotulo": "Emolumentos não pagos — sem contato com a parte",
    "descricao": "Nada impede o ato, mas ninguém pagou e não houve como contatar a parte. Pede orientação.",
    "assunto": "",
@@ -425,7 +440,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-custas-advogado-sem-retorno", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-custas-advogado-sem-retorno", "setor": "RGI", "finalidade": "nao-cumprido",
    "rotulo": "Emolumentos não pagos — advogado não retornou",
    "descricao": "Contato feito com o advogado para cobrar os emolumentos, sem retorno. Pede orientação.",
    "assunto": "",
@@ -438,7 +453,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-custas-aguardando-pagamento", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-custas-aguardando-pagamento", "setor": "RGI", "finalidade": "nao-cumprido",
    "rotulo": "Emolumentos enviados — aguardando pagamento",
    "descricao": "As custas foram enviadas ao advogado; o ato sai assim que o pagamento for confirmado.",
    "assunto": "",
@@ -450,7 +465,7 @@
    ],
    "fecho": "f6-disposicao"},
 
-  {"id": "rgi-exigencia-pendente", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-exigencia-pendente", "setor": "RGI", "finalidade": "nao-cumprido",
    "rotulo": "Exigência pendente (Nota de Exigência anexa)",
    "descricao": "Para cumprir a ordem é preciso atender a Nota de Exigência do protocolo.",
    "assunto": "",
@@ -462,7 +477,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-nota-devolutiva-titulo-judicial", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-nota-devolutiva-titulo-judicial", "setor": "RGI", "finalidade": "nao-cumprido",
    "rotulo": "Título judicial com Nota Devolutiva",
    "descricao": "O título foi qualificado e voltou com Nota Devolutiva anexa.",
    "assunto": "Matrícula n.º {matricula} deste CRI",
@@ -473,7 +488,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-nota-exigencia-resumo", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-nota-exigencia-resumo", "setor": "RGI", "finalidade": "nao-cumprido",
    "rotulo": "Pendências na qualificação (com resumo)",
    "descricao": "Explica em síntese as pendências da Nota de Exigência anexa.",
    "assunto": "",
@@ -487,7 +502,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-solicita-esclarecimento", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-solicita-esclarecimento", "setor": "RGI", "finalidade": "pedir-esclarecimento",
    "rotulo": "Pedido de esclarecimento ao juízo",
    "descricao": "A ordem é ambígua ou não permite identificar o imóvel/ato.",
    "assunto": "",
@@ -499,7 +514,7 @@
    ],
    "fecho": "f7"},
 
-  {"id": "rgi-penhora-sem-ordem-expressa", "setor": "RGI", "grupo": "Ordem não cumprida",
+  {"id": "rgi-penhora-sem-ordem-expressa", "setor": "RGI", "finalidade": "pedir-esclarecimento",
    "rotulo": "Mandado de penhora sem ordem expressa ao cartório",
    "descricao": "Chegou auto/mandado de penhora sem dizer qual ato o cartório deve praticar.",
    "assunto": "Mandado de Penhora – Matr. {matricula}",
@@ -511,7 +526,7 @@
    ],
    "fecho": "sem-mais-disposicao"},
 
-  {"id": "rgi-retificacao-manifestacao-favoravel", "setor": "RGI", "grupo": "Informações ao juízo",
+  {"id": "rgi-retificacao-manifestacao-favoravel", "setor": "RGI", "finalidade": "prestar-informacao",
    "rotulo": "Retificação de área judicial — sem óbice registral",
    "descricao": "Informa ao juízo que não há impedimento registral à retificação (acréscimo > 10% impediu a via administrativa).",
    "assunto": "Retificação de Área – Matr. {matricula}",
@@ -526,7 +541,7 @@
    ],
    "fecho": "f1"},
 
-  {"id": "rgi-notificacao-tabelionato-usucapiao", "setor": "RGI", "grupo": "Iniciativa do cartório",
+  {"id": "rgi-notificacao-tabelionato-usucapiao", "setor": "RGI", "finalidade": "solicitacao",
    "rotulo": "Pedido ao 2º Tabelionato: notificar Município (usucapião)",
    "descricao": "Pede ao Tabelionato que notifique o Município no procedimento de usucapião extrajudicial.",
    "referencia": false, "rotulo_assunto": "Ref.:", "destinatario": "tabeliao-2-morrinhos",
@@ -540,7 +555,7 @@
    ],
    "fecho": "ensejo"},
 
-  {"id": "rgi-inalienabilidade-pro-morar", "setor": "RGI", "grupo": "Iniciativa do cartório",
+  {"id": "rgi-inalienabilidade-pro-morar", "setor": "RGI", "finalidade": "solicitacao",
    "rotulo": "Município: manifestação sobre inalienabilidade (Pró-Morar)",
    "descricao": "Pede ao Município que se manifeste sobre a extinção da cláusula (art. 3º-B da Lei Municipal 4.330/2026).",
    "referencia": false, "destinatario": "prefeito-morrinhos",
@@ -561,7 +576,7 @@
    ],
    "fecho": "sem-mais-apreco"},
 
-  {"id": "stc-inteiro-teor", "setor": "STC", "grupo": "Certidões",
+  {"id": "stc-inteiro-teor", "setor": "STC", "finalidade": "envio-documento",
    "rotulo": "Certidão de inteiro teor anexa",
    "descricao": "Envia a certidão de inteiro teor da matrícula pedida.",
    "assunto": "Certidão atualizada da matrícula {matricula}",
@@ -571,7 +586,7 @@
    ],
    "fecho": "f1-sem-pronome"},
 
-  {"id": "stc-inteiro-teor-emitida", "setor": "STC", "grupo": "Certidões",
+  {"id": "stc-inteiro-teor-emitida", "setor": "STC", "finalidade": "envio-documento",
    "rotulo": "Certidão de inteiro teor emitida (órgão / SEI)",
    "descricao": "Para órgãos estaduais com processo SEI: informa que a certidão foi emitida e segue anexa.",
    "assunto": "Certidão de Inteiro Teor – Matr. {matricula}",
@@ -582,7 +597,7 @@
    ],
    "fecho": "sem-mais-estima"},
 
-  {"id": "stc-certidao-solicitada", "setor": "STC", "grupo": "Certidões",
+  {"id": "stc-certidao-solicitada", "setor": "STC", "finalidade": "envio-documento",
    "rotulo": "Certidão solicitada anexa (resposta por e-mail)",
    "descricao": "Resposta curta a órgão (PGE, SEAD, AGEHAB…): segue a certidão; resposta só por e-mail.",
    "assunto": "Solicita certidões",
@@ -593,7 +608,7 @@
    ],
    "fecho": "ensejo"},
 
-  {"id": "stc-ato-notarial", "setor": "STC", "grupo": "Certidões",
+  {"id": "stc-ato-notarial", "setor": "STC", "finalidade": "envio-documento",
    "rotulo": "Certidão de escritura / ato notarial anexa",
    "descricao": "Envia certidão de escritura lavrada nas notas do cartório. Pode registrar gratuidade.",
    "assunto": "Certidão de Escritura Pública",
@@ -604,7 +619,7 @@
    ],
    "fecho": "f1-sem-pronome"},
 
-  {"id": "stc-negativa-pf", "setor": "STC", "grupo": "Busca de bens",
+  {"id": "stc-negativa-pf", "setor": "STC", "finalidade": "resposta-busca",
    "rotulo": "Busca negativa — pessoa física (certidão negativa anexa)",
    "descricao": "Nenhum imóvel em nome da pessoa (viva ou falecida).",
    "assunto": "Busca de propriedade em nome de {nome_pesquisado}",
@@ -615,7 +630,7 @@
    ],
    "fecho": "f1-disposicao"},
 
-  {"id": "stc-negativa-pj", "setor": "STC", "grupo": "Busca de bens",
+  {"id": "stc-negativa-pj", "setor": "STC", "finalidade": "resposta-busca",
    "rotulo": "Busca negativa — pessoa jurídica (CNPJ)",
    "descricao": "Nenhum imóvel em nome da empresa/entidade.",
    "assunto": "Solicitação de Certidão Positiva/Negativa de propriedade por CNPJ",
@@ -626,7 +641,7 @@
    ],
    "fecho": "permanecemos-reiteramos"},
 
-  {"id": "stc-negativa-fundamentada", "setor": "STC", "grupo": "Busca de bens",
+  {"id": "stc-negativa-fundamentada", "setor": "STC", "finalidade": "resposta-busca",
    "rotulo": "Busca negativa fundamentada (juízo / reiteração)",
    "descricao": "Versão mais detalhada, para juiz: pesquisa limitada ao acervo e aos dados do ofício.",
    "assunto": "Busca de propriedade em nome de {nome_pesquisado}",
@@ -638,7 +653,7 @@
    ],
    "fecho": "sem-mais-disposicao"},
 
-  {"id": "stc-busca-positiva", "setor": "STC", "grupo": "Busca de bens",
+  {"id": "stc-busca-positiva", "setor": "STC", "finalidade": "resposta-busca",
    "rotulo": "Busca positiva — imóvel localizado",
    "descricao": "Localizado imóvel em nome da pessoa; segue a certidão da matrícula.",
    "assunto": "Busca de Propriedade em nome de {nome_pesquisado}",
@@ -650,7 +665,7 @@
    ],
    "fecho": "f-protestos-busca"},
 
-  {"id": "stc-car-promotoria", "setor": "STC", "grupo": "Busca de bens",
+  {"id": "stc-car-promotoria", "setor": "STC", "finalidade": "resposta-busca",
    "rotulo": "Imóvel rural localizado pelo CAR (Promotoria)",
    "descricao": "Identifica a matrícula do imóvel rural pelo número do CAR e envia a certidão.",
    "rotulo_assunto": "Ref.:", "destinatario": "mp-2promotoria-morrinhos",
@@ -663,7 +678,7 @@
    ],
    "fecho": "f3"},
 
-  {"id": "stc-comunicacao-incra", "setor": "STC", "grupo": "Comunicações periódicas",
+  {"id": "stc-comunicacao-incra", "setor": "STC", "finalidade": "comunicacao",
    "rotulo": "Comunicação mensal ao INCRA (imóveis rurais)",
    "descricao": "Modificações nas matrículas de imóveis rurais do mês anterior (art. 22, §7º, Lei 4.947/66).",
    "referencia": false, "destinatario": "incra-sr-go",
@@ -674,7 +689,7 @@
    ],
    "fecho": "ensejo"},
 
-  {"id": "stn-comunica-substabelecimento", "setor": "STN", "grupo": "Comunicação a outro tabelionato",
+  {"id": "stn-comunica-substabelecimento", "setor": "STN", "finalidade": "comunicacao",
    "rotulo": "Comunica substabelecimento de procuração",
    "descricao": "Avisa o tabelionato de origem que a procuração lavrada lá foi substabelecida aqui.",
    "referencia": false,
@@ -685,7 +700,7 @@
    ],
    "fecho": "ensejo-disposicao"},
 
-  {"id": "stn-comunica-revogacao", "setor": "STN", "grupo": "Comunicação a outro tabelionato",
+  {"id": "stn-comunica-revogacao", "setor": "STN", "finalidade": "comunicacao",
    "rotulo": "Comunica revogação de procuração",
    "descricao": "Avisa o tabelionato de origem que a procuração lavrada lá foi revogada aqui.",
    "referencia": false,
@@ -696,7 +711,7 @@
    ],
    "fecho": "ensejo-disposicao"},
 
-  {"id": "stn-comunica-dissolucao-ue", "setor": "STN", "grupo": "Comunicação a outro tabelionato",
+  {"id": "stn-comunica-dissolucao-ue", "setor": "STN", "finalidade": "comunicacao",
    "rotulo": "Comunica dissolução de união estável",
    "descricao": "Avisa o tabelionato onde a união foi reconhecida, para as anotações.",
    "referencia": false,
@@ -708,7 +723,7 @@
    ],
    "fecho": "ensejo-disposicao"},
 
-  {"id": "stn-mp-resolucao-571", "setor": "STN", "grupo": "Ministério Público",
+  {"id": "stn-mp-resolucao-571", "setor": "STN", "finalidade": "solicitacao",
    "rotulo": "MP: escritura com menor ou incapaz (Res. CNJ 571)",
    "descricao": "Pede a manifestação do MP para lavrar inventário/sobrepartilha com interessado menor ou incapaz.",
    "referencia": false, "destinatario": "mp-1promotoria-morrinhos",
@@ -724,7 +739,7 @@
    ],
    "fecho": "ensejo"},
 
-  {"id": "stn-mp-resposta-andamento", "setor": "STN", "grupo": "Ministério Público",
+  {"id": "stn-mp-resposta-andamento", "setor": "STN", "finalidade": "prestar-informacao",
    "rotulo": "MP: escritura parada por falta de documentos",
    "descricao": "Resposta a despacho do MP: as partes não trouxeram a documentação; escritura arquivada.",
    "destinatario": "mp-1promotoria-morrinhos",
@@ -737,7 +752,7 @@
    ],
    "fecho": "ensejo-quaisquer"},
 
-  {"id": "stn-busca-negativa-inventario", "setor": "STN", "grupo": "Respostas",
+  {"id": "stn-busca-negativa-inventario", "setor": "STN", "finalidade": "resposta-busca",
    "rotulo": "Busca negativa de inventário / nomeação de inventariante",
    "descricao": "Não há escritura de inventário nem de nomeação de inventariante do espólio.",
    "assunto": "",
@@ -748,7 +763,7 @@
    ],
    "fecho": "sendo-havia"},
 
-  {"id": "stn-receita-cpf-falecido", "setor": "STN", "grupo": "Órgãos",
+  {"id": "stn-receita-cpf-falecido", "setor": "STN", "finalidade": "solicitacao",
    "rotulo": "Receita Federal: regularizar CPF de falecido (DOI)",
    "descricao": "Pede a regularização do CPF do(a) falecido(a) para emitir a DOI da escritura.",
    "referencia": false, "destinatario": "receita-federal-caldas-novas",
@@ -762,7 +777,7 @@
    ],
    "fecho": "ensejo"},
 
-  {"id": "stn-censec-exclusao-testamento", "setor": "STN", "grupo": "Órgãos",
+  {"id": "stn-censec-exclusao-testamento", "setor": "STN", "finalidade": "solicitacao",
    "rotulo": "CENSEC: exclusão de testamento no RCTO",
    "descricao": "Pede à CENSEC a exclusão de testamento enviado com erro ao RCTO (1ª pessoa de quem assina).",
    "referencia": false, "rotulo_assunto": "Ref.:", "destinatario": "censec",
@@ -774,7 +789,7 @@
    ],
    "fecho": "aproveito-estima"},
 
-  {"id": "stn-itbi-parecer-municipio", "setor": "STN", "grupo": "Órgãos",
+  {"id": "stn-itbi-parecer-municipio", "setor": "STN", "finalidade": "solicitacao",
    "rotulo": "Município: parecer sobre incidência de ITBI",
    "descricao": "Pede ao Município a avaliação e a manifestação sobre incidência ou isenção de ITBI.",
    "referencia": false,
@@ -791,7 +806,7 @@
    ],
    "fecho": "ensejo-disposicao"},
 
-  {"id": "stn-guia-escritura-atualizada", "setor": "STN", "grupo": "Órgãos",
+  {"id": "stn-guia-escritura-atualizada", "setor": "STN", "finalidade": "solicitacao",
    "rotulo": "Município: guia para escritura atualizada",
    "descricao": "A guia da Secretaria de Habitação apresentada está vencida; pede uma atualizada.",
    "referencia": false,
@@ -804,7 +819,7 @@
    ],
    "fecho": "ensejo"},
 
-  {"id": "stn-banco-anuencia-credor", "setor": "STN", "grupo": "Órgãos",
+  {"id": "stn-banco-anuencia-credor", "setor": "STN", "finalidade": "solicitacao",
    "rotulo": "Banco: anuência do credor para escritura",
    "descricao": "Imóvel gravado por cédula/penhor: pede anuência ou ciência do banco credor.",
    "referencia": false,
@@ -816,7 +831,7 @@
    ],
    "fecho": "ensejo-disposicao"},
 
-  {"id": "adm-livro-diario-auxiliar", "setor": "ADM", "grupo": "Diretoria do Foro",
+  {"id": "adm-livro-diario-auxiliar", "setor": "ADM", "finalidade": "comunicacao",
    "rotulo": "Envia o Livro Diário Auxiliar do exercício",
    "descricao": "Envio anual ao Juiz Diretor do Foro (art. 11 do Prov. 45/2015-CNJ e art. 187, §1º, do CNPFE-GO).",
    "referencia": false, "destinatario": "diretor-foro-morrinhos",
@@ -828,7 +843,7 @@
    ],
    "fecho": "ensejo-vexa"},
 
-  {"id": "adm-comunica-ferias", "setor": "ADM", "grupo": "Diretoria do Foro",
+  {"id": "adm-comunica-ferias", "setor": "ADM", "finalidade": "comunicacao",
    "rotulo": "Comunica férias do titular",
    "descricao": "Comunica ao Diretor do Foro as férias do titular e quem responde pela serventia.",
    "referencia": false, "destinatario": "diretor-foro-morrinhos",
@@ -841,7 +856,7 @@
    ],
    "fecho": "aproveito-admiracao"},
 
-  {"id": "adm-nomeacao-substituto", "setor": "ADM", "grupo": "Diretoria do Foro",
+  {"id": "adm-nomeacao-substituto", "setor": "ADM", "finalidade": "comunicacao",
    "rotulo": "Encaminha nome de substituto(a)",
    "descricao": "Comunica ao Diretor do Foro o(a) substituto(a) nomeado(a) (art. 20, §2º, Lei 8.935/94).",
    "referencia": false, "destinatario": "diretor-foro-morrinhos",
@@ -853,7 +868,7 @@
    ],
    "fecho": "aproveito-admiracao"},
 
-  {"id": "resposta-livre", "setor": "*", "grupo": "Geral",
+  {"id": "resposta-livre", "setor": "*", "finalidade": "livre",
    "rotulo": "Resposta livre",
    "descricao": "Para o caso que não tem modelo: escreva o corpo; cabeçalho, destinatário, fecho e assinatura saem prontos.",
    "assunto": "[{assunto_livre}]",

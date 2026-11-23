@@ -20,6 +20,7 @@ class Catalogo:
     def __init__(self):
         m = _le("modelos.json")
         self.setores = m["setores"]
+        self.finalidades = m["finalidades"]
         self.campos = m["campos"]
         self.fechos = {k: v["texto"] for k, v in m["fechos"].items()}
         self.citacoes = m.get("citacoes", {})

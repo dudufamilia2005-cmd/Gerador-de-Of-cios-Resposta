@@ -36,7 +36,23 @@ setor, como hoje.
 
 ## Os modelos
 
-São 48 modelos, transcritos dos ofícios expedidos em 2025–2026:
+São 48 modelos, transcritos dos ofícios expedidos em 2025–2026. Na tela eles se
+filtram primeiro pelo **que o ofício faz** e depois pelo setor:
+
+| Finalidade | Exemplos |
+|---|---|
+| Serviço feito | penhora registrada, cancelamentos, ajuizamento averbado |
+| Não deu para cumprir | emolumentos pendentes, exigência, ordem fora da CNIB |
+| Já estava feito | indisponibilidade já cancelada, ato que não existe na matrícula |
+| Pedir esclarecimento | ordem ambígua, mandado de penhora sem ordem expressa |
+| Prestar informação | retificação de área, andamento ao MP |
+| Enviar o que foi pedido | certidão de inteiro teor, certidão de escritura |
+| Responder busca | busca negativa (PF/PJ), positiva, CAR |
+| Comunicar | INCRA, substabelecimento/revogação a outro tabelionato, Diretoria do Foro |
+| Solicitar | MP (Res. 571), Receita, CENSEC, Município, banco |
+| Texto livre | o caso sem modelo |
+
+Por setor:
 
 - **RGI** (23): ajuizamento averbado; penhora registrada; cancelamentos (penhora,
   hipoteca, arresto, indisponibilidade, ajuizamento, premonitória, consolidação);

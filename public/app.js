@@ -4,6 +4,7 @@
 let CAT = null;                       // catálogo vindo do servidor
 let modeloAtual = null;               // modelo escolhido na lista
 let setorFiltro = '';                 // aba de setor ('' = todos)
+let finalidadeFiltro = '';            // o que o ofício faz ('' = todas)
 const valores = new Map();            // "campo" -> texto digitado (compartilhado entre modelos)
 
 const $ = (id) => document.getElementById(id);
@@ -40,7 +41,7 @@ async function requisicao(caminho, opcoes = {}) {
 async function iniciar() {
   CAT = await requisicao('api/catalogo');
 
-  desenhaAbas();
+  desenhaFiltros();
   desenhaLista();
 
   for (const [sigla, nome] of Object.entries(CAT.setores)) {
@@ -82,28 +83,47 @@ async function iniciar() {
 
 // ------------------------------------------------------------ lista de modelos
 
-function desenhaAbas() {
-  const abas = $('setores');
-  const contagem = {};
-  const gerais = CAT.modelos.filter(m => m.setor === '*').length;   // aparecem em todas as abas
-  for (const m of CAT.modelos) if (m.setor !== '*') contagem[m.setor] = (contagem[m.setor] || 0) + 1;
-  for (const s of Object.keys(contagem)) contagem[s] += gerais;
-  const opcoes = [['', `Todos (${CAT.modelos.length})`],
-                  ...Object.keys(CAT.setores).filter(s => contagem[s])
-                                             .map(s => [s, `${s} (${contagem[s]})`])];
-  for (const [sigla, rotulo] of opcoes) {
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'aba'; b.textContent = rotulo;
-    b.setAttribute('role', 'tab');
-    b.setAttribute('aria-selected', String(sigla === setorFiltro));
-    b.title = sigla ? CAT.setores[sigla] : 'Todos os setores';
-    b.addEventListener('click', () => {
-      setorFiltro = sigla;
-      for (const x of abas.children) x.setAttribute('aria-selected', String(x === b));
-      desenhaLista();
-    });
-    abas.append(b);
+// Dois filtros que se somam: primeiro o que o ofício faz (finalidade), depois
+// o setor. A contagem de cada botão já considera o outro filtro, e botão que
+// não levaria a nenhum modelo fica apagado.
+const passaSetor = (m, s) => !s || m.setor === s || m.setor === '*';
+const passaFinalidade = (m, f) => !f || m.finalidade === f;
+
+function desenhaFiltros() {
+  const abasF = $('finalidades');
+  abasF.textContent = '';
+  const nF = (f) => CAT.modelos.filter(m => passaFinalidade(m, f) && passaSetor(m, setorFiltro)).length;
+  abasF.append(botaoFiltro('Todas', nF(''), finalidadeFiltro === '', 'Todas as finalidades',
+                           () => { finalidadeFiltro = ''; }));
+  for (const [id, f] of Object.entries(CAT.finalidades)) {
+    abasF.append(botaoFiltro(f.rotulo, nF(id), finalidadeFiltro === id, f.descricao,
+                             () => { finalidadeFiltro = finalidadeFiltro === id ? '' : id; }));
   }
+
+  const abasS = $('setores');
+  abasS.textContent = '';
+  const nS = (s) => CAT.modelos.filter(m => passaSetor(m, s) && passaFinalidade(m, finalidadeFiltro)).length;
+  abasS.append(botaoFiltro('Todos', nS(''), setorFiltro === '', 'Todos os setores',
+                           () => { setorFiltro = ''; }));
+  for (const [sigla, nome] of Object.entries(CAT.setores)) {
+    if (!CAT.modelos.some(m => m.setor === sigla)) continue;
+    abasS.append(botaoFiltro(sigla, nS(sigla), setorFiltro === sigla, nome,
+                             () => { setorFiltro = setorFiltro === sigla ? '' : sigla; }));
+  }
+}
+
+function botaoFiltro(rotulo, n, ligado, dica, acao) {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'aba'; b.title = dica;
+  b.setAttribute('role', 'tab');
+  b.setAttribute('aria-selected', String(ligado));
+  b.disabled = n === 0 && !ligado;
+  b.append(rotulo + ' ');
+  const c = document.createElement('span');
+  c.className = 'conta'; c.textContent = n;
+  b.append(c);
+  b.addEventListener('click', () => { acao(); desenhaFiltros(); desenhaLista(); });
+  return b;
 }
 
 function semAcento(t) {
@@ -114,32 +134,46 @@ function desenhaLista() {
   const termo = semAcento($('filtro').value.trim());
   const lista = $('lista');
   lista.textContent = '';
-  const visiveis = CAT.modelos.filter(m =>
-    (!setorFiltro || m.setor === setorFiltro || m.setor === '*') &&
-    (!termo || semAcento(`${m.rotulo} ${m.grupo} ${m.descricao} ${m.setor}`).includes(termo)));
+  const ordemF = Object.keys(CAT.finalidades);
+  const ordemS = Object.keys(CAT.setores);
+  const visiveis = CAT.modelos
+    .filter(m => passaSetor(m, setorFiltro) && passaFinalidade(m, finalidadeFiltro) &&
+      (!termo || semAcento(`${m.rotulo} ${m.descricao} ${m.setor} ${CAT.finalidades[m.finalidade].rotulo}`)
+                   .includes(termo)))
+    .sort((a, b) => ordemF.indexOf(a.finalidade) - ordemF.indexOf(b.finalidade)
+                    || ordemS.indexOf(a.setor) - ordemS.indexOf(b.setor));
 
   if (!visiveis.length) {
-    lista.innerHTML = '<div class="vazio">Nenhum modelo com esse termo.</div>';
+    lista.innerHTML = '<div class="vazio">Nenhum modelo com esses filtros.</div>';
     return;
   }
+  // Com uma finalidade escolhida o título dela já está no filtro: a lista vai
+  // corrida. Sem filtro, separa por finalidade.
   let grupo = null;
   for (const m of visiveis) {
-    const g = m.setor === '*' ? (m.grupo || 'Geral') : `${m.setor} · ${m.grupo || 'Outros'}`;
-    if (g !== grupo) {
-      grupo = g;
+    if (!finalidadeFiltro && m.finalidade !== grupo) {
+      grupo = m.finalidade;
       const h = document.createElement('div');
       h.className = 'grupo-lista';
-      h.textContent = g;
+      h.textContent = CAT.finalidades[grupo].rotulo;
       lista.append(h);
     }
+    const marcado = modeloAtual && modeloAtual.id === m.id;
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'item' + (modeloAtual && modeloAtual.id === m.id ? ' marcado' : '');
+    b.className = 'item' + (marcado ? ' marcado' : '');
+    b.title = m.descricao || '';
+    if (m.setor !== '*') {
+      const et = document.createElement('span');
+      et.className = 'etiqueta'; et.textContent = m.setor;
+      b.append(et);
+    }
     const texto = document.createElement('div');
     const nome = document.createElement('div');
     nome.className = 'nome'; nome.textContent = m.rotulo;
     texto.append(nome);
-    if (m.descricao) {
+    // descrição só no escolhido: a lista inteira com explicação virava parede
+    if (marcado && m.descricao) {
       const meta = document.createElement('div');
       meta.className = 'meta'; meta.textContent = m.descricao;
       texto.append(meta);

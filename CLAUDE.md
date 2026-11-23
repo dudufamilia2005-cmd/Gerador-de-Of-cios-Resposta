@@ -71,6 +71,10 @@ mover `destinatarios.json`/`assinantes.json` para fora do git.
    desliga a sugestão de número e devolve o `.docx` em base64.
 6. **Quem assina começa em branco.** Assinatura errada é pior que campo vazio;
    a tela lembra (localStorage, por máquina) a última pessoa escolhida.
+7. **Todo modelo tem `finalidade`** (chave de `finalidades` em
+   `dados/modelos.json`). É o filtro principal da tela — pedido da serventia
+   (23/11/2026): a lista com tudo junto ficava poluída. Os nomes das
+   finalidades ainda podem mudar; o validador reprova modelo sem finalidade.
 
 ## Pendências conhecidas
 

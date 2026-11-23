@@ -52,6 +52,8 @@ def main():
         mid = m["id"]
         if m["setor"] != "*" and m["setor"] not in cat.setores:
             erros.append(f"{mid}: setor '{m['setor']}' não existe")
+        if m.get("finalidade") not in cat.finalidades:
+            erros.append(f"{mid}: finalidade '{m.get('finalidade')}' não existe")
         fecho = m.get("fecho", "f1")
         if fecho not in (None, "escolha") and fecho not in cat.fechos:
             erros.append(f"{mid}: fecho '{fecho}' não existe")
